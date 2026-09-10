@@ -142,10 +142,36 @@
         </div>
 
         <div class="diagnostic-grid">
-          <section class="panel diagnostic-card" aria-labelledby="positioning-title">
+          <section class="panel diagnostic-card position-panel" aria-labelledby="positioning-title">
             <p class="eyebrow">Integrated diagnostic</p>
             <h2 id="positioning-title">Price positioning</h2>
-            <div class="chart-placeholder" aria-label="Price positioning chart placeholder">Competitor benchmark coming soon</div>
+            <p class="position-intro">Four segments. Four competitive contexts. Choose whose awareness matters for this price.</p>
+            <fieldset id="position-controls" disabled>
+              <legend>Who are we asking to choose LUMEN?</legend>
+              <div id="position-segments" class="position-segments"></div>
+              <label class="position-channel-label" for="position-channel">Compare single-can prices in <select id="position-channel"></select></label>
+            </fieldset>
+            <p id="position-status" class="input-help" role="status">Loading price positioning…</p>
+            <button id="retry-positioning" class="button button-secondary" type="button" hidden>Retry loading</button>
+            <div id="position-results" hidden>
+              <div class="position-summary" aria-live="polite" aria-atomic="true">
+                <h3 id="position-audience"></h3>
+                <p id="position-price-summary"></p>
+                <div class="decision-note"><h3>What this price asks of this segment</h3><p id="position-assessment"></p></div>
+              </div>
+              <figure class="position-figure">
+                <figcaption>Price × segment awareness <span>Dots = competitors · vertical line = LUMEN price only</span></figcaption>
+                <div id="position-chart"></div>
+              </figure>
+              <div id="position-brand-cards" class="position-brand-cards"></div>
+              <p id="position-channel-note" class="input-help"></p>
+              <details class="model-notes"><summary>Awareness, prices and interpretation</summary>
+                <p>Awareness = respondents recognising a brand / all respondents in the selected segment, across cities. Counts come from the case's synthetic customer survey; percentages are displayed rounded to whole numbers. The four segments are never pooled into a German average. Awareness is not perceived quality, preference or willingness to pay.</p>
+                <p>Prices come from competitor_prices_by_channel.csv, using single 330ml cans only. Multipacks and subscriptions are excluded. Changing channel moves prices, while awareness continues to describe the selected segment as a whole. Changing segment preserves both axis scales. The price axis expands if LUMEN exceeds the displayed range.</p>
+                <p>LUMEN has no measured awareness in this survey. Its full-height vertical line encodes only the simulator's retail price; it has no dot or awareness value. The nearest-price assessment uses listed brands in the chosen channel; equal distances use the numbered brand order. This comparison does not adjust the simulator's acceptance or ROI.</p>
+                <p>Each brand card gives the recognition count and segment sample size. Samples of 8–14 are directional; awareness below n = 8 is withheld. Sample sizes are not confidence intervals or evidence of population representativeness. The browser loads prepared prices and segment aggregates only.</p>
+              </details>
+            </div>
           </section>
           <section class="panel diagnostic-card launch-panel" aria-labelledby="timing-title">
             <p class="eyebrow">Integrated diagnostic</p>
