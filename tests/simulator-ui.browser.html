@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Simulator browser checks</title>
+<iframe id="app" src="../index.html#simulator" width="1200" height="900"></iframe>
+<pre id="report">RUNNING</pre>
+<script type="module">
+const report = document.getElementById("report");
+const frame = document.getElementById("app");
+const checks = [];
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+  checks.push(message);
+}
+async function until(test) {
+  for (let attempt = 0; attempt < 300; attempt++) {
+    if (test()) return;
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  }
+  throw new Error("Timed out waiting for simulator");
+}
+try {
+  await until(() => frame.contentDocument.getElementById("simulator-status")?.textContent === "Simulator ready");
+  const win = frame.contentWindow;
+  const doc = frame.contentDocument;
+  const text = (id) => doc.getElementById(id).textContent;
+  const metric = (name) => doc.querySelector('[data-metric="' + name + '"]').textContent;
+  function set(values) {
+    for (const [id, value] of Object.entries(values)) doc.getElementById(id).value = value;
+    doc.getElementById("scenario-form").dispatchEvent(new win.Event("input", { bubbles: true }));
+  }
+  assert(!doc.getElementById("simulator").hidden, "Hash route opens simulator");
+  assert(doc.querySelector('[data-route-link="simulator"]').getAttribute("aria-current") === "page", "Active navigation is accessible");
+  assert(metric("contribution") === "€1.07" && metric("ratio") === "3.47:1", "Balanced scenario matches agreed contribution and ratio");
+  assert(metric("acceptance") === "45.45%" && metric("payback") === "6.69 months", "Balanced interpolation and payback match");
+  assert(metric("customers") === "2,727.27" && metric("gap") === "+0.47×", "Balanced acquisition and target gap match");
+  assert(text("scenario-tradeoff").includes("Jonas") && text("scenario-tradeoff").includes("Elena") && text("scenario-tradeoff").includes("giving up"), "Trade-off names both leaders and the sacrifice");
+
+  set({ price: 2.59, "mix-dtc": 50, "mix-retail": 20, "mix-gym": 30, budget: 150000, cac: 50 });
+  assert(metric("contribution") === "€1.38" && metric("ltv") === "€196.65", "Premium contribution and LTV match");
+  assert(metric("ratio") === "3.93:1" && metric("gap") === "+0.93×" && metric("payback") === "5.9 months", "Premium return and payback match");
+
+  set({ price: 1.79, "mix-dtc": 20, "mix-retail": 60, "mix-gym": 20, budget: 100000, cac: 38 });
+  assert(metric("ratio") === "2.09:1" && metric("gap") === "-0.91×" && metric("payback") === "11.12 months", "Volume misses target with expected payback");
+  assert(text("scenario-tradeoff").includes("neither Jonas") && text("target-status").includes("Below"), "Volume is not falsely described as serving Elena");
+  set({ budget: 200000 });
+  assert(metric("customers") === "5,263.16" && metric("ratio") === "2.09:1", "Budget changes acquisition without changing per-customer return");
+  set({ cac: 20 });
+  assert(metric("ratio") === "3.96:1" && text("scenario-tradeoff").includes("serves Elena"), "CAC changes return and stakeholder assessment");
+  set({ price: 2.59, cac: 100 });
+  assert(text("scenario-tradeoff").includes("serves Jonas") && text("scenario-tradeoff").includes("missing Elena"), "Premium scenario failing target names the CFO sacrifice");
+
+  set({ "mix-dtc": 10 });
+  assert(!doc.getElementById("scenario-error").hidden && metric("ratio") === "—", "Invalid mix clears stale metrics");
+  set({ "mix-dtc": 20, cac: 0 });
+  assert(!doc.getElementById("scenario-error").hidden && metric("ratio") === "—", "Zero CAC is rejected");
+  set({ cac: 38, price: "" });
+  assert(metric("contribution") === "—", "Empty price clears results");
+  set({ price: 0.5 });
+  assert(metric("payback") === "No payback" && text("scenario-warning").includes("non-positive"), "Negative contribution is never shown as negative payback");
+  assert(text("scenario-warning").includes("nearest tested endpoint"), "Out-of-range acceptance clamp is disclosed");
+  set({ price: 2.29, "mix-dtc": 100, "mix-retail": 0, "mix-gym": 0 });
+  assert(metric("contribution") === "€1.25", "Single-channel scenario recalculates from the engine");
+  win.location.hash = "#cities";
+  await until(() => !doc.getElementById("cities").hidden);
+  win.location.hash = "#simulator";
+  await until(() => !doc.getElementById("simulator").hidden);
+  assert(doc.getElementById("price").value === "2.29", "Scenario survives hash navigation");
+
+  const fetchOriginal = win.fetch;
+  win.fetch = async () => new win.Response("", { status: 503 });
+  const ui = await win.eval('import("/simulator-ui.js")');
+  await ui.initialiseSimulator();
+  assert(text("simulator-status") === "Simulator unavailable" && doc.getElementById("scenario-controls").disabled, "Loading failure disables controls and shows explicit state");
+  win.fetch = fetchOriginal;
+  doc.getElementById("retry-simulator").click();
+  await until(() => text("simulator-status") === "Simulator ready");
+  assert(!doc.getElementById("scenario-controls").disabled && metric("ratio") !== "—", "Retry recovers calculation");
+
+  report.textContent = "PASS: " + checks.length + " browser checks\n" + checks.join("\n");
+  report.dataset.result = "pass";
+} catch (error) {
+  report.textContent = "FAIL: " + error.stack + "\nPassed: " + checks.join("\n");
+  report.dataset.result = "fail";
+}
+</script>
+</html>
