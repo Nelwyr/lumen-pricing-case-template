@@ -26,14 +26,21 @@ Why we're doing this: it's not to monitor you. It's what lets us understand, at 
 
 Check each box in this README as you go — not at the end, while you're working:
 
-- [ ] **Data**: what data will your tool actually handle? Is any of it sensitive (personal data, company customer data)? `data/customer_survey.csv` has name/email columns — did you use them in your tool? If yes, how did you protect/anonymize them? If no, why did you choose not to expose them? (A team that never touches these columns should still be able to answer — "we chose not to use them" is a valid answer.)
-- [ ] **API keys**: if your tool calls an external API (weather, or anything else), where is the key stored? Never hardcoded in a file committed to GitHub. (A valid answer: "we didn't use any external API.")
-- [ ] **Deployment**: if you deployed a live demo, does any endpoint or response return raw, unfiltered data (e.g. the full survey with name/email) to any visitor?
-- [ ] **Files generated along the way**: if your tool (or Codex) created new files derived from the provided data, did you think about whether they should be committed to the repo or not?
-- [ ] **Storage**: if you're keeping any data, in what structure, and why that choice over another?
-- [ ] **Robustness**: what happens if the user gives an empty, inconsistent, or unexpected input?
-- [ ] **Explainability**: can you explain to someone non-technical why your tool does what it does?
-- [ ] **Business relevance**: does your prototype actually answer the problem posed in the brief, or is it an interesting technical build that's off-target?
+- [x] **Data**: The tool handles survey responses, competitor pricing, channel economics, cost structure, marketing funnel figures and regional market context. The survey is the only sensitive source: `data/customer_survey.csv` carries `first_name`, `last_name`, `email` and `respondent_id`. **We chose not to use any of them.** `scripts/prepare_app_data.py` aggregates the 420 responses by city and by city × segment, and writes only those aggregates to `data/app_data/`. No direct identifier is ever loaded by the browser. The cost of that choice is real and we accept it: we lose within-group distributions — a city × segment average can hide two very different sub-populations — and we can no longer test at respondent level whether price sensitivity actually explains purchase intent inside a segment, which is the mechanism our pricing recommendation rests on.
+
+- [x] **API keys**: No external API is called. The app is fully static HTML, CSS and JavaScript, with no build step and no server-side code, so there is no key to store anywhere.
+
+- [x] **Deployment**: We did not deploy a public demo. If we did, the honest answer is that the app itself only ever fetches the anonymised files under `data/app_data/`, but the original case CSVs still sit in this public repository — a static file server would serve them like any other file. The app's limited fetches are a design choice, not an access-control boundary, and a real deployment would need the raw survey removed from the served directory.
+
+- [x] **Files generated along the way**: Yes, and we committed them deliberately. `data/app_data/` holds `customer_city_aggregates.csv`, `customer_segment_city_aggregates.csv`, `historical_sales_weekly_deduplicated.csv`, `simulator_assumptions.json` and `city_prioritisation.json`. They are committed because the app cannot run without them and because they are the anonymised layer we want reviewers to see. All of them are regenerated from the source CSVs by a single command (`py -3 scripts/prepare_app_data.py`), so nothing in the repository is a hand-edited artefact nobody can reproduce. Screenshots and temporary test output were not committed.
+
+- [x] **Storage**: Nothing is stored at runtime. No database, no cookies, no browser storage, no session state — reload the page and every input returns to its default. Data lives in two prepared formats under `data/app_data/`: CSV for flat aggregates, JSON where values are already joined across sources (regional market size × city survey aggregates, or the simulator's model assumptions). We chose prepared files over reading the raw CSVs in the browser precisely so that the anonymisation happens once, in a script we can audit, rather than being re-implemented in front-end code every time.
+
+- [x] **Robustness**: Covered by 22 automated browser checks on the simulator and 27 on the city screen, including a 390px viewport. Concretely: channel mix shares that do not sum correctly are rejected; a non-positive or non-finite price, budget or CAC is refused with a readable message; setting all three city criteria to zero clears the ranking rather than showing a stale or empty table; a criterion identical across all cities scores 50 everywhere instead of dividing by zero; a candidate city whose sample falls below n=15 blocks the ranking outright; and a failed data load shows an explanatory message with a retry button instead of a blank screen.
+
+- [x] **Explainability**: Every screen states its own method and its own limits. The simulator shows the contribution breakdown channel by channel and a signed gap to the 3:1 target, and it names in plain language which of Jonas or Elena the current setting serves and what is being given up. The city screen shows each criterion's contribution to the index, the rank movement against equal weights, and a "Scoring, sources and limits" panel that spells out the min–max formula, the fact that wellness density is a survey-composition proxy rather than a population measure, and that the index is a relative priority ranking, not a sales forecast. A non-technical reader can follow why a city moves without reading any code.
+
+- [x] **Business relevance**: The brief asks for a price, a channel and a launch timing, and asks explicitly what is being given up. The simulator answers the first two and quantifies the sacrifice; the city screen answers where to start. We deliberately did not build features that would look impressive without answering the question — the launch-window and competitor-benchmark diagnostics are still marked as not built, and we would rather say so than ship a chart that adds nothing to the decision.
 
 These questions aren't here to slow you down — they're part of what's being evaluated. A thoughtful answer to one of them is worth more than an extra feature nobody asked for.
 
@@ -46,11 +53,21 @@ These questions aren't here to slow you down — they're part of what's being ev
 
 ## Our Approach
 
-The simulator compares price and channel choices through contribution, acquisition and return, with an explicit leadership trade-off. City prioritisation answers where to begin: change the relative importance of market size, regional growth and wellness survey share to see which cities move up or down. The index supports a discussion about priorities; it does not forecast city sales or ROI.
+LUMEN has never sold a can in Germany, so no tool can predict German volume. We built something narrower and more useful: a way to see what each choice costs.
 
-### City prioritisation
+The simulator lets you set a price, a channel mix, a marketing budget and an acquisition cost, and shows what that combination leaves in margin, how many customers it buys, and how long it takes to earn the money back. Its point is not to produce a number. It is to make the disagreement between Jonas and Elena visible: at €2.59 the margin is strong but only a quarter of the market accepts the price; at €1.79 acceptance is high but the mix never repays its own acquisition. Every setting says out loud which of the two it serves and what it sacrifices.
 
-Serve the repository over HTTP and open `index.html#cities`. No framework, build or external API is required. Regenerate prepared inputs with `py -3 scripts/prepare_app_data.py`.
+The city screen answers where to begin. Berlin, Munich, Hamburg, Cologne and Frankfurt are compared on market size, regional growth and the share of wellness-oriented respondents. You move the weights yourself, because the right answer depends on what the company is optimising for. Berlin leads under almost any weighting; the only way to displace it is to bet entirely on wellness density, and then Cologne wins on sixteen respondents. That fragility is part of the answer.
+
+Two things shaped the build as much as the analysis. We found four duplicated rows in the historical sales file, which inflated volume and revenue until removed. And we chose never to load the name and email columns from the survey: the app works entirely on aggregates, which costs us the ability to study individual behaviour but means no screen can expose a respondent.
+
+What the tool does not do is as important as what it does. It does not forecast German sales, estimate market share, or price in distribution access. Every figure that reaches beyond the home markets is an extrapolation, and the app says so on the screen where it matters.
+
+### Running the app
+
+Serve the repository over HTTP and open `index.html`. No framework, build or external API is required. Regenerate prepared inputs with `py -3 scripts/prepare_app_data.py`.
+
+### City prioritisation — method
 
 - Market size is the 2026 national functional-beverage total (€9.1bn) multiplied by Exhibit 1's illustrative regional share. Growth uses that exhibit's regional CAGR.
 - Wellness density is explicitly a proxy: Urban Wellness Professionals divided by all survey respondents in the city. The preparation script writes this count into the city aggregate. It measures sample composition, not population or venue density.
@@ -58,6 +75,14 @@ Serve the repository over HTTP and open `index.html#cities`. No framework, build
 - City-level aggregates alone supply survey inputs to the score. All segment averages remain diagnostic and show their count and reliability: n≥15 reliable, 8–14 directional, below 8 insufficient (intent withheld). A candidate city below n=15 blocks the ranking. These flags do not establish survey representativeness or statistical confidence.
 - Other Germany is contextual only because it combines multiple places. It is excluded from both ranking and normalisation.
 
-The browser loads only prepared files under `data/app_data/`. The new `city_prioritisation.json` joins city aggregates and regional assumptions, with segment diagnostics stored separately. It contains no individual survey records or direct identifiers. The original case CSVs remain in this repository; the app's limited fetches do not constitute an access-control boundary for a deployed file server.
+### Simulator — method
+
+- Unit contribution is recalculated from the retailer margin, distributor cut, payment processing and fulfilment coefficients in `channel_economics.csv`, not read from `price_test_results.csv`. The derived formula reproduces all nine Exhibit 11 values to within display rounding.
+- Acceptance is linearly interpolated between the three tested prices (€1.79, €2.19, €2.59) and clamped outside that range.
+- Scenario LTV is derived from the scenario's own contribution, not held constant. Customer lifetime is calibrated at 23.2 months on the assumption that `ltv_estimate_eur` in the funnel is net revenue. The source does not state the basis; the assumption is recorded explicitly in the prepared data as `observed_ltv_basis`. Treating it as contribution instead would imply a 6.4-year lifetime for a brand founded in 2022, which we rejected.
+
+### Data handling
+
+The browser loads only prepared files under `data/app_data/`. `city_prioritisation.json` joins city aggregates and regional assumptions, with segment diagnostics stored separately. It contains no individual survey records or direct identifiers. The original case CSVs remain in this repository; the app's limited fetches do not constitute an access-control boundary for a deployed file server.
 
 Browser checks: `py -3 scripts/check_simulator_ui.py` for the simulator and `py -3 scripts/check_simulator_ui.py --page tests/city-ui.browser.html` for cities. To check an actual 390px iframe viewport, use `--page tests/city-ui.browser.html?viewport=390`. The runner uses installed Chrome without added dependencies.
