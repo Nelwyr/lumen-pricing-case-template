@@ -34,7 +34,10 @@
       "acceptance_pct": 26.7
     }
   ],
-  "estimated_ltv_eur": 126.31859995512677,
+  "observed_weighted_ltv_eur": 126.31859995512677,
+  "observed_ltv_basis": "net_revenue_assumption",
+  "home_market_net_price_eur": 0.886,
   "average_monthly_frequency": 6.144285714285714,
+  "customer_lifetime_months": 23.20396379250055,
   "target_ltv_cac_ratio": 3
 }

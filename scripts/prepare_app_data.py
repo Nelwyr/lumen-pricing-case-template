@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 from statistics import mean
@@ -202,6 +203,18 @@ def write_simulator_assumptions() -> None:
             if row["cost_component"] == "TOTAL COGS per unit (330ml can)"
         )
     )
+    home_market_kpi = next(
+        row["cost_component"] for row in cost_rows if row["cost_component"].startswith("[KPI")
+    )
+    net_price_match = re.search(r"net price EUR([0-9.]+)", home_market_kpi)
+    if net_price_match is None:
+        raise ValueError("Could not derive the home-market net price from cost_breakdown.csv")
+    home_market_net_price = float(net_price_match.group(1))
+    # ltv_estimate_eur has no stated basis in the source export. We calibrate
+    # lifetime as net revenue, then calculate scenario LTV from contribution.
+    customer_lifetime_months = weighted_ltv / (
+        home_market_net_price * average_monthly_frequency
+    )
 
     assumptions = {
         "cogs_per_unit_eur": cogs,
@@ -213,8 +226,11 @@ def write_simulator_assumptions() -> None:
             }
             for price, acceptances in sorted(acceptance_by_price.items())
         ],
-        "estimated_ltv_eur": weighted_ltv,
+        "observed_weighted_ltv_eur": weighted_ltv,
+        "observed_ltv_basis": "net_revenue_assumption",
+        "home_market_net_price_eur": home_market_net_price,
         "average_monthly_frequency": average_monthly_frequency,
+        "customer_lifetime_months": customer_lifetime_months,
         "target_ltv_cac_ratio": 3,
     }
     with SIMULATOR_ASSUMPTIONS_OUTPUT.open("w", encoding="utf-8") as destination:
