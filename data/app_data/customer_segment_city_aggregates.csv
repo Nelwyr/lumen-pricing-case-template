@@ -1,0 +1,25 @@
+segment,city,respondent_count,sample_reliability,avg_age,avg_purchase_frequency_per_month,avg_monthly_beverage_spend_eur,avg_price_sensitivity_1_10,avg_lumen_purchase_intent_1_10,most_preferred_channel,pct_prefer_dtc_online,pct_prefer_retail_grocery,pct_prefer_gym_&_office,pct_aware_pulsup,pct_aware_matelibre,pct_aware_voltfit,pct_aware_rootandrise
+Fitness & Gym-Goers,Berlin,14,directional_small_sample,27.8,6.6,20.9,5.2,8.2,Gym & Office,14.3,35.7,50.0,78.6,28.6,85.7,35.7
+Fitness & Gym-Goers,Cologne,6,insufficient,30.0,5.6,16.2,5.2,7.4,Retail/Grocery,0.0,66.7,33.3,50.0,50.0,66.7,16.7
+Fitness & Gym-Goers,Frankfurt,9,directional_small_sample,23.9,5.9,21.4,5.2,8.0,Gym & Office,11.1,33.3,55.6,33.3,33.3,88.9,33.3
+Fitness & Gym-Goers,Hamburg,11,directional_small_sample,27.2,5.9,21.2,5.5,7.9,Retail/Grocery,0.0,54.5,45.5,72.7,27.3,63.6,54.5
+Fitness & Gym-Goers,Munich,11,directional_small_sample,28.0,6.9,20.1,5.4,8.7,Gym & Office,27.3,27.3,45.5,45.5,45.5,72.7,18.2
+Fitness & Gym-Goers,Other Germany,32,reliable,25.4,6.2,19.8,5.7,7.7,Gym & Office,25.0,34.4,40.6,43.8,34.4,78.1,31.2
+On-the-go Commuters,Berlin,19,reliable,37.0,5.7,20.9,6.2,6.3,Retail/Grocery,15.8,73.7,10.5,78.9,36.8,26.3,10.5
+On-the-go Commuters,Cologne,6,insufficient,39.2,6.4,18.4,5.8,6.5,Retail/Grocery,33.3,50.0,16.7,50.0,50.0,0.0,0.0
+On-the-go Commuters,Frankfurt,7,insufficient,41.6,5.1,19.2,6.6,7.4,Retail/Grocery,14.3,85.7,0.0,85.7,57.1,28.6,14.3
+On-the-go Commuters,Hamburg,10,directional_small_sample,33.2,5.0,20.7,5.5,7.5,Retail/Grocery,10.0,80.0,10.0,80.0,10.0,30.0,0.0
+On-the-go Commuters,Munich,16,reliable,38.2,6.4,21.4,6.1,6.3,Retail/Grocery,18.8,50.0,31.2,87.5,68.8,43.8,31.2
+On-the-go Commuters,Other Germany,32,reliable,39.3,6.1,19.0,5.8,6.8,Retail/Grocery,15.6,46.9,37.5,71.9,37.5,18.8,21.9
+Students & Budget-Conscious,Berlin,21,reliable,21.0,5.2,16.0,7.8,5.6,Retail/Grocery,33.3,57.1,9.5,95.2,52.4,23.8,4.8
+Students & Budget-Conscious,Cologne,17,reliable,20.8,4.2,16.3,8.3,5.3,Gym & Office,23.5,35.3,41.2,94.1,82.4,29.4,5.9
+Students & Budget-Conscious,Frankfurt,10,directional_small_sample,20.5,5.7,20.2,7.9,5.5,Retail/Grocery,10.0,60.0,30.0,80.0,60.0,60.0,10.0
+Students & Budget-Conscious,Hamburg,14,directional_small_sample,20.8,5.9,17.0,8.0,5.3,Retail/Grocery,21.4,57.1,21.4,92.9,71.4,50.0,0.0
+Students & Budget-Conscious,Munich,17,reliable,21.7,4.7,17.1,7.6,6.0,Retail/Grocery,17.6,64.7,17.6,70.6,52.9,41.2,0.0
+Students & Budget-Conscious,Other Germany,56,reliable,21.2,5.1,17.5,7.9,5.4,Retail/Grocery,21.4,53.6,25.0,82.1,50.0,35.7,7.1
+Urban Wellness Professionals,Berlin,27,reliable,32.4,7.0,21.9,3.6,9.1,DTC Online,63.0,29.6,7.4,48.1,51.9,48.1,66.7
+Urban Wellness Professionals,Cologne,16,reliable,32.6,8.0,20.6,3.8,9.0,DTC Online,43.8,43.8,12.5,25.0,37.5,43.8,62.5
+Urban Wellness Professionals,Frankfurt,6,insufficient,31.3,7.4,23.5,3.9,8.3,DTC Online,66.7,33.3,0.0,0.0,83.3,66.7,66.7
+Urban Wellness Professionals,Hamburg,13,directional_small_sample,32.7,8.1,22.7,3.6,9.6,DTC Online,53.8,30.8,15.4,38.5,38.5,46.2,69.2
+Urban Wellness Professionals,Munich,13,directional_small_sample,30.8,8.1,21.5,3.6,9.1,DTC Online,69.2,23.1,7.7,38.5,23.1,46.2,84.6
+Urban Wellness Professionals,Other Germany,37,reliable,31.7,7.4,21.5,3.5,9.2,DTC Online,43.2,32.4,24.3,32.4,48.6,51.4,56.8

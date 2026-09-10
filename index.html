@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LUMEN Germany launch decision workspace: ROI scenarios and city prioritisation."
+    />
+    <title>LUMEN — Germany launch decision</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="LUMEN, accueil">
+        <span class="brand-mark">L</span>
+        <span>LUMEN <small>Germany launch</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="#home" data-route-link="home">Accueil</a>
+        <a href="#simulator" data-route-link="simulator">Scénarios ROI</a>
+        <a href="#cities" data-route-link="cities">Priorisation villes</a>
+      </nav>
+    </header>
+
+    <main id="main-content" class="app-shell">
+      <section id="home" class="view" data-view="home" aria-labelledby="home-title">
+        <p class="eyebrow">Décision Allemagne · 2026</p>
+        <h1 id="home-title">Décider avec clarté, assumer les compromis.</h1>
+        <p class="recommendation">
+          Recommandation de travail : privilégier la combinaison prix, canal et mois qui atteint un
+          retour sur investissement crédible, plutôt que de maximiser une seule métrique.
+        </p>
+
+        <div class="section-heading">
+          <p class="eyebrow">Ce que nous assumons</p>
+          <h2>Trois compromis explicites</h2>
+        </div>
+        <div class="tradeoff-grid">
+          <article class="tradeoff-card">
+            <span class="card-index">01</span>
+            <h3>Volume initial</h3>
+            <p>Nous ne maximisons pas l’acceptation à court terme si elle détruit la contribution.</p>
+          </article>
+          <article class="tradeoff-card">
+            <span class="card-index">02</span>
+            <h3>Couverture nationale</h3>
+            <p>Nous ne cherchons pas à être partout dès le lancement avant d’avoir validé les villes prioritaires.</p>
+          </article>
+          <article class="tradeoff-card">
+            <span class="card-index">03</span>
+            <h3>Vitesse de payback</h3>
+            <p>Nous ne réduisons pas le prix ou le budget au point de compromettre la construction de la marque.</p>
+          </article>
+        </div>
+
+        <div class="home-actions">
+          <a class="button button-primary" href="#simulator">Ouvrir le simulateur</a>
+          <a class="button button-secondary" href="#cities">Voir les villes</a>
+        </div>
+      </section>
+
+      <section id="simulator" class="view" data-view="simulator" aria-labelledby="simulator-title" hidden>
+        <div class="view-header">
+          <div>
+            <p class="eyebrow">Outil central</p>
+            <h1 id="simulator-title">Simulateur ROI / scénario</h1>
+          </div>
+          <span class="status-pill" data-data-status>Connexion aux données agrégées…</span>
+        </div>
+        <p class="lede">Configurez un scénario de lancement ; les calculs seront ajoutés dans l’étape suivante.</p>
+
+        <div class="simulator-layout">
+          <section class="panel controls-panel" aria-labelledby="scenario-inputs-title">
+            <div class="panel-heading">
+              <p class="eyebrow">Entrées</p>
+              <h2 id="scenario-inputs-title">Scénario</h2>
+            </div>
+            <div class="control-grid">
+              <label>Prix public <span>À configurer</span><div class="control-placeholder"></div></label>
+              <label>Mix de canaux <span>À configurer</span><div class="control-placeholder"></div></label>
+              <label>Budget marketing <span>À configurer</span><div class="control-placeholder"></div></label>
+              <label>Mois de lancement <span>À configurer</span><div class="control-placeholder"></div></label>
+            </div>
+          </section>
+
+          <section class="panel results-panel" aria-labelledby="scenario-results-title">
+            <div class="panel-heading">
+              <p class="eyebrow">Sortie</p>
+              <h2 id="scenario-results-title">Lecture du scénario</h2>
+            </div>
+            <div class="metric-grid" aria-label="Indicateurs de scénario à venir">
+              <div><span>Contribution unitaire</span><strong>—</strong></div>
+              <div><span>CAC estimé</span><strong>—</strong></div>
+              <div><span>LTV : CAC</span><strong>—</strong></div>
+              <div><span>Payback estimé</span><strong>—</strong></div>
+            </div>
+            <p class="empty-state">Les résultats seront calculés à précision complète puis arrondis uniquement à l’affichage.</p>
+          </section>
+        </div>
+
+        <div class="diagnostic-grid">
+          <section class="panel diagnostic-card" aria-labelledby="positioning-title">
+            <p class="eyebrow">Diagnostic intégré</p>
+            <h2 id="positioning-title">Positionnement prix</h2>
+            <div class="chart-placeholder" aria-label="Emplacement du graphique de positionnement">Benchmark concurrentiel à venir</div>
+          </section>
+          <section class="panel diagnostic-card" aria-labelledby="timing-title">
+            <p class="eyebrow">Diagnostic intégré</p>
+            <h2 id="timing-title">Fenêtre de lancement</h2>
+            <div class="chart-placeholder" aria-label="Emplacement du diagnostic de timing">Saisonnalité et contexte promotionnel à venir</div>
+          </section>
+        </div>
+      </section>
+
+      <section id="cities" class="view" data-view="cities" aria-labelledby="cities-title" hidden>
+        <div class="view-header">
+          <div>
+            <p class="eyebrow">Où lancer</p>
+            <h1 id="cities-title">Priorisation des villes</h1>
+          </div>
+          <span class="status-pill" data-data-status>Connexion aux données agrégées…</span>
+        </div>
+        <p class="lede">Le classement utilisera les agrégats ville entière. Les signaux segmentaires resteront accompagnés de leur niveau de fiabilité.</p>
+
+        <section class="panel city-panel" aria-labelledby="city-ranking-title">
+          <div class="panel-heading">
+            <p class="eyebrow">Classement à venir</p>
+            <h2 id="city-ranking-title">Villes candidates</h2>
+          </div>
+          <div class="table-placeholder" role="table" aria-label="Emplacement du classement des villes">
+            <div role="row" class="table-header"><span>Rang</span><span>Ville</span><span>Signal client</span><span>Fiabilité</span></div>
+            <div class="empty-state">Les agrégats de ville seront affichés ici, sans exposition des réponses individuelles.</div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>LUMEN Strategy &amp; Analytics</span>
+      <span>Sources applicatives : agrégats anonymisés et ventes dédoublonnées uniquement.</span>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
