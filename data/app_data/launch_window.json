@@ -1,0 +1,67 @@
+{
+  "source": "seasonality_and_weather.csv (Exhibit 12)",
+  "indexBaseline": 100,
+  "demandTestThreshold": 110,
+  "months": [
+    {
+      "month": 1,
+      "demandIndex": 78.0,
+      "temperatureC": 2.0
+    },
+    {
+      "month": 2,
+      "demandIndex": 80.0,
+      "temperatureC": 3.0
+    },
+    {
+      "month": 3,
+      "demandIndex": 88.0,
+      "temperatureC": 7.0
+    },
+    {
+      "month": 4,
+      "demandIndex": 98.0,
+      "temperatureC": 11.0
+    },
+    {
+      "month": 5,
+      "demandIndex": 118.0,
+      "temperatureC": 15.0
+    },
+    {
+      "month": 6,
+      "demandIndex": 132.0,
+      "temperatureC": 18.0
+    },
+    {
+      "month": 7,
+      "demandIndex": 138.0,
+      "temperatureC": 19.0
+    },
+    {
+      "month": 8,
+      "demandIndex": 128.0,
+      "temperatureC": 19.0
+    },
+    {
+      "month": 9,
+      "demandIndex": 104.0,
+      "temperatureC": 15.0
+    },
+    {
+      "month": 10,
+      "demandIndex": 90.0,
+      "temperatureC": 11.0
+    },
+    {
+      "month": 11,
+      "demandIndex": 82.0,
+      "temperatureC": 6.0
+    },
+    {
+      "month": 12,
+      "demandIndex": 84.0,
+      "temperatureC": 3.0
+    }
+  ]
+}

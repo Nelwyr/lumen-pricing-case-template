@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -28,6 +29,7 @@ CITY_OUTPUT = OUTPUT_DIR / "customer_city_aggregates.csv"
 SALES_OUTPUT = OUTPUT_DIR / "historical_sales_weekly_deduplicated.csv"
 SIMULATOR_ASSUMPTIONS_OUTPUT = OUTPUT_DIR / "simulator_assumptions.json"
 CITY_PRIORITISATION_OUTPUT = OUTPUT_DIR / "city_prioritisation.json"
+LAUNCH_WINDOW_OUTPUT = OUTPUT_DIR / "launch_window.json"
 
 CHANNELS = ("DTC Online", "Retail/Grocery", "Gym & Office")
 NUMERIC_FIELDS = (
@@ -299,12 +301,36 @@ def write_city_prioritisation() -> None:
         destination.write("\n")
 
 
+def write_launch_window() -> None:
+    """Preserve Exhibit 12's index scale and export validated monthly context."""
+    with (DATA_DIR / "seasonality_and_weather.csv").open(encoding="utf-8", newline="") as source:
+        months = sorted([{
+            "month": int(row["month"]),
+            "demandIndex": float(row["seasonality_index_100_avg"]),
+            "temperatureC": float(row["avg_temp_germany_celsius"]),
+        } for row in csv.DictReader(source)], key=lambda row: row["month"])
+    if [row["month"] for row in months] != list(range(1, 13)):
+        raise ValueError("Seasonality requires exactly one row for each month, January–December")
+    if any(not math.isfinite(row["demandIndex"]) or row["demandIndex"] <= 0
+           or not math.isfinite(row["temperatureC"]) for row in months):
+        raise ValueError("Seasonality requires positive finite demand and finite temperature")
+    with LAUNCH_WINDOW_OUTPUT.open("w", encoding="utf-8") as destination:
+        json.dump({
+            "source": "seasonality_and_weather.csv (Exhibit 12)",
+            "indexBaseline": 100,
+            "demandTestThreshold": 110,
+            "months": months,
+        }, destination, indent=2)
+        destination.write("\n")
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     customer_rows = aggregate_customer_survey()
     sales_rows, unique_sales_rows = deduplicate_sales()
     write_simulator_assumptions()
     write_city_prioritisation()
+    write_launch_window()
     print(
         f"Aggregated {customer_rows} customer responses into "
         f"{CUSTOMER_OUTPUT.name} and {CITY_OUTPUT.name}."
@@ -315,6 +341,7 @@ def main() -> None:
     )
     print(f"Wrote aggregate simulator assumptions to {SIMULATOR_ASSUMPTIONS_OUTPUT.name}.")
     print(f"Wrote city ranking inputs and separate diagnostics to {CITY_PRIORITISATION_OUTPUT.name}.")
+    print(f"Wrote monthly demand and weather context to {LAUNCH_WINDOW_OUTPUT.name}.")
 
 
 if __name__ == "__main__":
