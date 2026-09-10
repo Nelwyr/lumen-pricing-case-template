@@ -1,0 +1,703 @@
+week_start_date,country,channel,units_sold,revenue_eur,promo_active
+2025-01-06,Netherlands,DTC Online,1139,1537.22,False
+2025-01-06,Netherlands,Retail/Grocery,2321,3169.66,False
+2025-01-06,Netherlands,Gym & Office,581,777.69,False
+2025-01-06,Denmark,DTC Online,914,1198.06,False
+2025-01-06,Denmark,Retail/Grocery,1029,1385.76,False
+2025-01-06,Denmark,Gym & Office,490,680.41,False
+2025-01-06,Sweden,DTC Online,917,1253.04,False
+2025-01-06,Sweden,Retail/Grocery,1547,2104.34,False
+2025-01-06,Sweden,Gym & Office,560,761.77,False
+2025-01-13,Netherlands,DTC Online,1261,1705.51,False
+2025-01-13,Netherlands,Retail/Grocery,2334,3188.34,False
+2025-01-13,Netherlands,Gym & Office,619,820.97,False
+2025-01-13,Denmark,DTC Online,867,1158.91,False
+2025-01-13,Denmark,Retail/Grocery,1097,1517.38,False
+2025-01-13,Denmark,Gym & Office,451,604.57,False
+2025-01-13,Sweden,DTC Online,907,1214.64,False
+2025-01-13,Sweden,Retail/Grocery,1516,2054.06,False
+2025-01-13,Sweden,Gym & Office,576,769.9,False
+2025-01-20,Netherlands,DTC Online,1260,1725.23,False
+2025-01-20,Netherlands,Retail/Grocery,2389,3264.4,False
+2025-01-20,Netherlands,Gym & Office,641,856.03,False
+2025-01-20,Denmark,DTC Online,856,1150.26,True
+2025-01-20,Denmark,Retail/Grocery,1078,1451.14,False
+2025-01-20,Denmark,Gym & Office,515,694.01,False
+2025-01-20,Sweden,DTC Online,1035,1430.74,False
+2025-01-20,Sweden,Retail/Grocery,1445,1971.03,False
+2025-01-20,Sweden,Gym & Office,662,914.24,False
+2025-01-27,Netherlands,DTC Online,1313,1728.66,False
+2025-01-27,Netherlands,Retail/Grocery,2151,2983.69,True
+2025-01-27,Netherlands,Gym & Office,585,771.37,False
+2025-01-27,Denmark,DTC Online,812,1076.75,False
+2025-01-27,Denmark,Retail/Grocery,1022,1372.79,False
+2025-01-27,Denmark,Gym & Office,526,708.99,False
+2025-01-27,Sweden,DTC Online,1027,1346.64,False
+2025-01-27,Sweden,Retail/Grocery,1371,1884.39,False
+2025-01-27,Sweden,Gym & Office,620,828.76,False
+2025-02-03,Netherlands,DTC Online,1307,1794.82,False
+2025-02-03,Netherlands,Retail/Grocery,2401,3247.22,False
+2025-02-03,Netherlands,Gym & Office,634,859.35,False
+2025-02-03,Denmark,DTC Online,860,1181.15,False
+2025-02-03,Denmark,Retail/Grocery,1117,1488.78,False
+2025-02-03,Denmark,Gym & Office,478,636.95,False
+2025-02-03,Sweden,DTC Online,1040,1375.42,False
+2025-02-03,Sweden,Retail/Grocery,1453,1923.34,False
+2025-02-03,Sweden,Gym & Office,679,932.84,False
+2025-02-10,Netherlands,DTC Online,1204,1673.55,False
+2025-02-10,Netherlands,Retail/Grocery,2329,3119.56,False
+2025-02-10,Netherlands,Gym & Office,663,903.94,False
+2025-02-10,Denmark,DTC Online,842,1133.18,False
+2025-02-10,Denmark,Retail/Grocery,1153,1521.2,True
+2025-02-10,Denmark,Gym & Office,545,747.6,False
+2025-02-10,Sweden,DTC Online,1096,1449.07,False
+2025-02-10,Sweden,Retail/Grocery,1551,2094.78,False
+2025-02-10,Sweden,Gym & Office,620,856.89,False
+2025-02-17,Netherlands,DTC Online,1342,1865.41,False
+2025-02-17,Netherlands,Retail/Grocery,2478,3391.17,False
+2025-02-17,Netherlands,Gym & Office,628,828.08,False
+2025-02-17,Denmark,DTC Online,831,1133.83,False
+2025-02-17,Denmark,Retail/Grocery,1066,1449.25,False
+2025-02-17,Denmark,Gym & Office,501,669.3,False
+2025-02-17,Sweden,DTC Online,981,1326.45,False
+2025-02-17,Sweden,Retail/Grocery,1614,2139.12,False
+2025-02-17,Sweden,Gym & Office,681,929.12,False
+2025-02-24,Netherlands,DTC Online,1396,1872.66,False
+2025-02-24,Netherlands,Retail/Grocery,2417,3265.21,True
+2025-02-24,Netherlands,Gym & Office,666,893.57,False
+2025-02-24,Denmark,DTC Online,892,1195.97,True
+2025-02-24,Denmark,Retail/Grocery,1131,1509.27,False
+2025-02-24,Denmark,Gym & Office,520,690.03,False
+2025-02-24,Sweden,DTC Online,1078,1447.93,False
+2025-02-24,Sweden,Retail/Grocery,1473,2015.75,False
+2025-02-24,Sweden,Gym & Office,672,902.53,False
+2025-03-03,Netherlands,DTC Online,1457,1924.89,False
+2025-03-03,Netherlands,Retail/Grocery,2835,3833.06,False
+2025-03-03,Netherlands,Gym & Office,767,1041.08,False
+2025-03-03,Denmark,DTC Online,919,1250.98,False
+2025-03-03,Denmark,Retail/Grocery,1216,1637.87,False
+2025-03-03,Denmark,Gym & Office,608,805.99,False
+2025-03-03,Sweden,DTC Online,1109,1496.3,False
+2025-03-03,Sweden,Retail/Grocery,1667,2261.96,False
+2025-03-03,Sweden,Gym & Office,745,989.13,False
+2025-03-10,Netherlands,DTC Online,1362,1816.65,False
+2025-03-10,Netherlands,Retail/Grocery,2702,3565.45,False
+2025-03-10,Netherlands,Gym & Office,697,922.85,False
+2025-03-10,Denmark,DTC Online,1026,1345.91,False
+2025-03-10,Denmark,Retail/Grocery,1288,1787.9,False
+2025-03-10,Denmark,Gym & Office,561,756.46,False
+2025-03-10,Sweden,DTC Online,1109,1513.85,False
+2025-03-10,Sweden,Retail/Grocery,1819,2436.97,False
+2025-03-10,Sweden,Gym & Office,665,884.8,False
+2025-03-17,Netherlands,DTC Online,1368,1842.48,False
+2025-03-17,Netherlands,Retail/Grocery,2598,3413.21,False
+2025-03-17,Netherlands,Gym & Office,741,1027.67,True
+2025-03-17,Denmark,DTC Online,975,1327.22,True
+2025-03-17,Denmark,Retail/Grocery,1233,1677.34,False
+2025-03-17,Denmark,Gym & Office,585,773.98,False
+2025-03-17,Sweden,DTC Online,1126,1551.57,False
+2025-03-17,Sweden,Retail/Grocery,1677,2290.84,False
+2025-03-17,Sweden,Gym & Office,729,975.39,False
+2025-03-24,Netherlands,DTC Online,1373,1829.24,False
+2025-03-24,Netherlands,Retail/Grocery,2636,3648.47,False
+2025-03-24,Netherlands,Gym & Office,696,939.79,False
+2025-03-24,Denmark,DTC Online,1062,1438.75,False
+2025-03-24,Denmark,Retail/Grocery,1398,1926.49,False
+2025-03-24,Denmark,Gym & Office,598,821.96,False
+2025-03-24,Sweden,DTC Online,1244,1640.76,False
+2025-03-24,Sweden,Retail/Grocery,1615,2160.39,False
+2025-03-24,Sweden,Gym & Office,687,924.22,False
+2025-03-31,Netherlands,DTC Online,1472,2043.25,False
+2025-03-31,Netherlands,Retail/Grocery,2604,3566.96,False
+2025-03-31,Netherlands,Gym & Office,690,942.36,False
+2025-03-31,Denmark,DTC Online,988,1310.58,False
+2025-03-31,Denmark,Retail/Grocery,1295,1775.84,False
+2025-03-31,Denmark,Gym & Office,538,725.61,False
+2025-03-31,Sweden,DTC Online,1116,1464.37,False
+2025-03-31,Sweden,Retail/Grocery,1786,2406.63,False
+2025-03-31,Sweden,Gym & Office,680,907.07,True
+2025-04-07,Netherlands,DTC Online,1536,2026.79,False
+2025-04-07,Netherlands,Retail/Grocery,3052,4046.04,False
+2025-04-07,Netherlands,Gym & Office,759,1002.86,False
+2025-04-07,Denmark,DTC Online,1101,1493.46,False
+2025-04-07,Denmark,Retail/Grocery,1552,2130.5,False
+2025-04-07,Denmark,Gym & Office,653,858.72,False
+2025-04-07,Sweden,DTC Online,1369,1851.35,False
+2025-04-07,Sweden,Retail/Grocery,2116,2800.34,False
+2025-04-07,Sweden,Gym & Office,756,1034.4,False
+2025-04-14,Netherlands,DTC Online,1762,2428.84,False
+2025-04-14,Netherlands,Retail/Grocery,3122,4135.07,False
+2025-04-14,Netherlands,Gym & Office,774,1065.89,False
+2025-04-14,Denmark,DTC Online,1134,1532.21,False
+2025-04-14,Denmark,Retail/Grocery,1538,2053.16,False
+2025-04-14,Denmark,Gym & Office,658,888.08,False
+2025-04-14,Sweden,DTC Online,1276,1745.56,False
+2025-04-14,Sweden,Retail/Grocery,1979,2653.18,False
+2025-04-14,Sweden,Gym & Office,857,1169.93,False
+2025-04-21,Netherlands,DTC Online,1587,2130.53,False
+2025-04-21,Netherlands,Retail/Grocery,3008,4147.73,False
+2025-04-21,Netherlands,Gym & Office,870,1205.44,False
+2025-04-21,Denmark,DTC Online,1064,1451.41,False
+2025-04-21,Denmark,Retail/Grocery,1460,1973.68,False
+2025-04-21,Denmark,Gym & Office,620,831.72,False
+2025-04-21,Sweden,DTC Online,1429,1957.1,False
+2025-04-21,Sweden,Retail/Grocery,1886,2525.28,False
+2025-04-21,Sweden,Gym & Office,790,1088.51,False
+2025-04-28,Netherlands,DTC Online,1598,2147.55,False
+2025-04-28,Netherlands,Retail/Grocery,3190,4375.22,False
+2025-04-28,Netherlands,Gym & Office,869,1194.34,False
+2025-04-28,Denmark,DTC Online,1134,1546.21,False
+2025-04-28,Denmark,Retail/Grocery,1609,2173.64,False
+2025-04-28,Denmark,Gym & Office,659,869.48,False
+2025-04-28,Sweden,DTC Online,1278,1771.1,True
+2025-04-28,Sweden,Retail/Grocery,2079,2862.27,False
+2025-04-28,Sweden,Gym & Office,771,1020.81,False
+2025-05-05,Netherlands,DTC Online,1965,2621.36,False
+2025-05-05,Netherlands,Retail/Grocery,3859,5260.0,False
+2025-05-05,Netherlands,Gym & Office,1009,1359.37,False
+2025-05-05,Denmark,DTC Online,1405,1897.3,False
+2025-05-05,Denmark,Retail/Grocery,1896,2565.82,True
+2025-05-05,Denmark,Gym & Office,837,1163.22,False
+2025-05-05,Sweden,DTC Online,1518,2043.17,False
+2025-05-05,Sweden,Retail/Grocery,2403,3153.73,False
+2025-05-05,Sweden,Gym & Office,1036,1422.04,False
+2025-05-12,Netherlands,DTC Online,1923,2585.25,False
+2025-05-12,Netherlands,Retail/Grocery,3659,5017.9,False
+2025-05-12,Netherlands,Gym & Office,1014,1373.32,False
+2025-05-12,Denmark,DTC Online,1406,1905.19,False
+2025-05-12,Denmark,Retail/Grocery,1688,2246.45,False
+2025-05-12,Denmark,Gym & Office,792,1080.52,False
+2025-05-12,Sweden,DTC Online,1569,2062.41,False
+2025-05-12,Sweden,Retail/Grocery,2293,3070.74,False
+2025-05-12,Sweden,Gym & Office,1030,1412.63,False
+2025-05-19,Netherlands,DTC Online,2004,2693.74,False
+2025-05-19,Netherlands,Retail/Grocery,3693,4852.87,False
+2025-05-19,Netherlands,Gym & Office,978,1305.41,False
+2025-05-19,Denmark,DTC Online,1464,2020.15,False
+2025-05-19,Denmark,Retail/Grocery,1730,2340.88,True
+2025-05-19,Denmark,Gym & Office,832,1117.98,False
+2025-05-19,Sweden,DTC Online,1614,2116.2,False
+2025-05-19,Sweden,Retail/Grocery,2264,3022.75,False
+2025-05-19,Sweden,Gym & Office,992,1306.88,False
+2025-05-26,Netherlands,DTC Online,2117,2807.52,False
+2025-05-26,Netherlands,Retail/Grocery,3954,5391.51,False
+2025-05-26,Netherlands,Gym & Office,994,1379.7,False
+2025-05-26,Denmark,DTC Online,1460,2027.07,True
+2025-05-26,Denmark,Retail/Grocery,1940,2574.07,False
+2025-05-26,Denmark,Gym & Office,790,1071.2,False
+2025-05-26,Sweden,DTC Online,1676,2324.77,False
+2025-05-26,Sweden,Retail/Grocery,2496,3388.17,False
+2025-05-26,Sweden,Gym & Office,1038,1403.91,False
+2025-06-02,Netherlands,DTC Online,2254,2965.61,False
+2025-06-02,Netherlands,Retail/Grocery,4239,5653.95,False
+2025-06-02,Netherlands,Gym & Office,1121,1505.57,False
+2025-06-02,Denmark,DTC Online,1611,2197.24,False
+2025-06-02,Denmark,Retail/Grocery,2192,2981.9,False
+2025-06-02,Denmark,Gym & Office,872,1177.14,False
+2025-06-02,Sweden,DTC Online,1944,2693.39,False
+2025-06-02,Sweden,Retail/Grocery,2834,3896.82,False
+2025-06-02,Sweden,Gym & Office,1230,1703.8,False
+2025-06-09,Netherlands,DTC Online,2160,2863.63,False
+2025-06-09,Netherlands,Retail/Grocery,4082,5592.18,False
+2025-06-09,Netherlands,Gym & Office,1226,1646.19,False
+2025-06-09,Denmark,DTC Online,1722,2343.38,False
+2025-06-09,Denmark,Retail/Grocery,2000,2665.5,False
+2025-06-09,Denmark,Gym & Office,951,1263.52,False
+2025-06-09,Sweden,DTC Online,1755,2302.11,False
+2025-06-09,Sweden,Retail/Grocery,2703,3645.85,False
+2025-06-09,Sweden,Gym & Office,1147,1586.14,False
+2025-06-16,Netherlands,DTC Online,2251,2953.0,False
+2025-06-16,Netherlands,Retail/Grocery,4131,5593.82,False
+2025-06-16,Netherlands,Gym & Office,1082,1480.2,False
+2025-06-16,Denmark,DTC Online,1509,2085.61,False
+2025-06-16,Denmark,Retail/Grocery,2021,2656.91,False
+2025-06-16,Denmark,Gym & Office,987,1346.17,False
+2025-06-16,Sweden,DTC Online,1838,2531.89,False
+2025-06-16,Sweden,Retail/Grocery,2685,3640.19,False
+2025-06-16,Sweden,Gym & Office,1097,1495.54,False
+2025-06-23,Netherlands,DTC Online,2452,3315.22,False
+2025-06-23,Netherlands,Retail/Grocery,4024,5464.94,False
+2025-06-23,Netherlands,Gym & Office,1139,1568.31,False
+2025-06-23,Denmark,DTC Online,1714,2347.77,False
+2025-06-23,Denmark,Retail/Grocery,2006,2644.21,False
+2025-06-23,Denmark,Gym & Office,900,1208.32,False
+2025-06-23,Sweden,DTC Online,1746,2361.83,False
+2025-06-23,Sweden,Retail/Grocery,2644,3579.2,False
+2025-06-23,Sweden,Gym & Office,1127,1501.16,False
+2025-06-30,Netherlands,DTC Online,2228,3003.33,False
+2025-06-30,Netherlands,Retail/Grocery,4197,5715.38,False
+2025-06-30,Netherlands,Gym & Office,1093,1496.75,False
+2025-06-30,Denmark,DTC Online,1526,2111.7,False
+2025-06-30,Denmark,Retail/Grocery,2029,2720.2,False
+2025-06-30,Denmark,Gym & Office,969,1339.79,False
+2025-06-30,Sweden,DTC Online,1900,2524.43,False
+2025-06-30,Sweden,Retail/Grocery,2611,3622.29,False
+2025-06-30,Sweden,Gym & Office,1260,1680.68,False
+2025-07-07,Netherlands,DTC Online,2585,3447.33,False
+2025-07-07,Netherlands,Retail/Grocery,4304,5789.08,False
+2025-07-07,Netherlands,Gym & Office,1303,1774.29,False
+2025-07-07,Denmark,DTC Online,1664,2189.8,False
+2025-07-07,Denmark,Retail/Grocery,2217,3035.5,False
+2025-07-07,Denmark,Gym & Office,960,1289.96,False
+2025-07-07,Sweden,DTC Online,1859,2458.5,False
+2025-07-07,Sweden,Retail/Grocery,2773,3725.78,False
+2025-07-07,Sweden,Gym & Office,1251,1671.3,False
+2025-07-14,Netherlands,DTC Online,2601,3541.13,False
+2025-07-14,Netherlands,Retail/Grocery,4535,6174.08,True
+2025-07-14,Netherlands,Gym & Office,1188,1585.09,False
+2025-07-14,Denmark,DTC Online,1628,2164.78,False
+2025-07-14,Denmark,Retail/Grocery,2328,3170.93,False
+2025-07-14,Denmark,Gym & Office,1007,1352.13,False
+2025-07-14,Sweden,DTC Online,1982,2735.66,False
+2025-07-14,Sweden,Retail/Grocery,2839,3854.04,False
+2025-07-14,Sweden,Gym & Office,1205,1586.19,False
+2025-07-21,Netherlands,DTC Online,2467,3305.94,False
+2025-07-21,Netherlands,Retail/Grocery,4654,6102.23,True
+2025-07-21,Netherlands,Gym & Office,1267,1721.94,False
+2025-07-21,Denmark,DTC Online,1631,2196.89,False
+2025-07-21,Denmark,Retail/Grocery,2371,3114.39,False
+2025-07-21,Denmark,Gym & Office,1014,1340.09,False
+2025-07-21,Sweden,DTC Online,1902,2578.06,True
+2025-07-21,Sweden,Retail/Grocery,3025,4150.73,False
+2025-07-21,Sweden,Gym & Office,1321,1782.72,False
+2025-07-28,Netherlands,DTC Online,3053,4231.86,False
+2025-07-28,Netherlands,Retail/Grocery,5657,7749.87,False
+2025-07-28,Netherlands,Gym & Office,1585,2102.08,False
+2025-07-28,Denmark,DTC Online,2345,3208.81,False
+2025-07-28,Denmark,Retail/Grocery,2720,3736.44,True
+2025-07-28,Denmark,Gym & Office,1371,1821.48,False
+2025-07-28,Sweden,DTC Online,2461,3338.88,False
+2025-07-28,Sweden,Retail/Grocery,3592,4840.15,False
+2025-07-28,Sweden,Gym & Office,1724,2313.09,False
+2025-08-04,Netherlands,DTC Online,2310,3104.15,False
+2025-08-04,Netherlands,Retail/Grocery,4021,5446.91,True
+2025-08-04,Netherlands,Gym & Office,1258,1695.34,False
+2025-08-04,Denmark,DTC Online,1665,2270.78,False
+2025-08-04,Denmark,Retail/Grocery,2176,2992.21,True
+2025-08-04,Denmark,Gym & Office,936,1254.57,False
+2025-08-04,Sweden,DTC Online,1935,2554.61,False
+2025-08-04,Sweden,Retail/Grocery,2617,3464.98,False
+2025-08-04,Sweden,Gym & Office,1176,1572.28,False
+2025-08-11,Netherlands,DTC Online,2211,3022.5,False
+2025-08-11,Netherlands,Retail/Grocery,4173,5570.43,False
+2025-08-11,Netherlands,Gym & Office,1183,1642.41,False
+2025-08-11,Denmark,DTC Online,1609,2163.04,False
+2025-08-11,Denmark,Retail/Grocery,2036,2802.95,False
+2025-08-11,Denmark,Gym & Office,943,1268.14,False
+2025-08-11,Sweden,DTC Online,1965,2651.36,False
+2025-08-11,Sweden,Retail/Grocery,2866,3967.26,False
+2025-08-11,Sweden,Gym & Office,1172,1552.67,True
+2025-08-18,Netherlands,DTC Online,2259,3044.21,False
+2025-08-18,Netherlands,Retail/Grocery,4340,5724.02,False
+2025-08-18,Netherlands,Gym & Office,1189,1599.52,False
+2025-08-18,Denmark,DTC Online,1671,2250.13,False
+2025-08-18,Denmark,Retail/Grocery,2203,2911.25,False
+2025-08-18,Denmark,Gym & Office,901,1200.59,False
+2025-08-18,Sweden,DTC Online,1980,2724.73,False
+2025-08-18,Sweden,Retail/Grocery,2930,3887.24,False
+2025-08-18,Sweden,Gym & Office,1096,1503.29,False
+2025-08-25,Netherlands,DTC Online,2554,3395.39,False
+2025-08-25,Netherlands,Retail/Grocery,4102,5480.77,False
+2025-08-25,Netherlands,Gym & Office,1289,1700.68,False
+2025-08-25,Denmark,DTC Online,1779,2344.89,False
+2025-08-25,Denmark,Retail/Grocery,1979,2665.28,False
+2025-08-25,Denmark,Gym & Office,948,1289.66,False
+2025-08-25,Sweden,DTC Online,1963,2622.93,True
+2025-08-25,Sweden,Retail/Grocery,2928,3941.68,False
+2025-08-25,Sweden,Gym & Office,1292,1786.78,False
+2025-09-01,Netherlands,DTC Online,1839,2536.76,False
+2025-09-01,Netherlands,Retail/Grocery,3460,4754.56,False
+2025-09-01,Netherlands,Gym & Office,985,1337.91,False
+2025-09-01,Denmark,DTC Online,1306,1735.6,False
+2025-09-01,Denmark,Retail/Grocery,1720,2255.2,False
+2025-09-01,Denmark,Gym & Office,763,1024.02,False
+2025-09-01,Sweden,DTC Online,1678,2218.29,False
+2025-09-01,Sweden,Retail/Grocery,2459,3366.63,False
+2025-09-01,Sweden,Gym & Office,1041,1414.08,False
+2025-09-08,Netherlands,DTC Online,1839,2462.91,False
+2025-09-08,Netherlands,Retail/Grocery,3572,4789.82,False
+2025-09-08,Netherlands,Gym & Office,999,1315.49,False
+2025-09-08,Denmark,DTC Online,1338,1772.31,False
+2025-09-08,Denmark,Retail/Grocery,1643,2219.83,False
+2025-09-08,Denmark,Gym & Office,803,1093.65,False
+2025-09-08,Sweden,DTC Online,1681,2273.06,False
+2025-09-08,Sweden,Retail/Grocery,2202,2967.03,True
+2025-09-08,Sweden,Gym & Office,1030,1373.85,False
+2025-09-15,Netherlands,DTC Online,2035,2714.35,False
+2025-09-15,Netherlands,Retail/Grocery,3582,4855.59,False
+2025-09-15,Netherlands,Gym & Office,1054,1424.05,False
+2025-09-15,Denmark,DTC Online,1356,1826.72,False
+2025-09-15,Denmark,Retail/Grocery,1856,2483.87,False
+2025-09-15,Denmark,Gym & Office,819,1073.56,False
+2025-09-15,Sweden,DTC Online,1572,2158.64,False
+2025-09-15,Sweden,Retail/Grocery,2199,2953.73,False
+2025-09-15,Sweden,Gym & Office,959,1312.06,False
+2025-09-22,Netherlands,DTC Online,1972,2711.37,False
+2025-09-22,Netherlands,Retail/Grocery,3887,5345.05,False
+2025-09-22,Netherlands,Gym & Office,927,1287.66,False
+2025-09-22,Denmark,DTC Online,1421,1910.73,True
+2025-09-22,Denmark,Retail/Grocery,1747,2289.58,False
+2025-09-22,Denmark,Gym & Office,785,1053.72,False
+2025-09-22,Sweden,DTC Online,1652,2260.43,False
+2025-09-22,Sweden,Retail/Grocery,2504,3404.08,False
+2025-09-22,Sweden,Gym & Office,1067,1455.58,False
+2025-09-29,Netherlands,DTC Online,1867,2465.27,False
+2025-09-29,Netherlands,Retail/Grocery,3849,5257.27,False
+2025-09-29,Netherlands,Gym & Office,924,1245.99,False
+2025-09-29,Denmark,DTC Online,1332,1835.11,False
+2025-09-29,Denmark,Retail/Grocery,1798,2367.02,False
+2025-09-29,Denmark,Gym & Office,750,1007.75,False
+2025-09-29,Sweden,DTC Online,1702,2330.62,False
+2025-09-29,Sweden,Retail/Grocery,2392,3136.13,False
+2025-09-29,Sweden,Gym & Office,958,1277.38,False
+2025-10-06,Netherlands,DTC Online,1709,2284.15,False
+2025-10-06,Netherlands,Retail/Grocery,3365,4524.16,False
+2025-10-06,Netherlands,Gym & Office,869,1178.69,False
+2025-10-06,Denmark,DTC Online,1306,1714.12,False
+2025-10-06,Denmark,Retail/Grocery,1558,2131.65,False
+2025-10-06,Denmark,Gym & Office,736,1015.52,False
+2025-10-06,Sweden,DTC Online,1293,1695.18,False
+2025-10-06,Sweden,Retail/Grocery,2104,2800.84,False
+2025-10-06,Sweden,Gym & Office,924,1218.73,False
+2025-10-13,Netherlands,DTC Online,1789,2407.66,False
+2025-10-13,Netherlands,Retail/Grocery,3032,4148.76,False
+2025-10-13,Netherlands,Gym & Office,866,1169.64,False
+2025-10-13,Denmark,DTC Online,1252,1732.97,False
+2025-10-13,Denmark,Retail/Grocery,1617,2178.82,False
+2025-10-13,Denmark,Gym & Office,720,965.61,False
+2025-10-13,Sweden,DTC Online,1497,2039.44,False
+2025-10-13,Sweden,Retail/Grocery,2089,2899.84,False
+2025-10-13,Sweden,Gym & Office,833,1137.42,False
+2025-10-20,Netherlands,DTC Online,1753,2320.16,False
+2025-10-20,Netherlands,Retail/Grocery,3219,4422.17,False
+2025-10-20,Netherlands,Gym & Office,878,1166.43,False
+2025-10-20,Denmark,DTC Online,1320,1766.9,False
+2025-10-20,Denmark,Retail/Grocery,1617,2140.35,False
+2025-10-20,Denmark,Gym & Office,699,961.02,False
+2025-10-20,Sweden,DTC Online,1320,1752.78,False
+2025-10-20,Sweden,Retail/Grocery,2105,2925.92,False
+2025-10-20,Sweden,Gym & Office,917,1258.01,False
+2025-10-27,Netherlands,DTC Online,1880,2591.82,False
+2025-10-27,Netherlands,Retail/Grocery,3295,4342.6,True
+2025-10-27,Netherlands,Gym & Office,947,1301.38,False
+2025-10-27,Denmark,DTC Online,1280,1777.21,False
+2025-10-27,Denmark,Retail/Grocery,1608,2217.48,False
+2025-10-27,Denmark,Gym & Office,710,958.92,False
+2025-10-27,Sweden,DTC Online,1328,1761.11,False
+2025-10-27,Sweden,Retail/Grocery,2199,3005.73,False
+2025-10-27,Sweden,Gym & Office,884,1219.93,False
+2025-11-03,Netherlands,DTC Online,1584,2179.35,False
+2025-11-03,Netherlands,Retail/Grocery,2827,3923.99,False
+2025-11-03,Netherlands,Gym & Office,746,1027.33,False
+2025-11-03,Denmark,DTC Online,1088,1439.83,False
+2025-11-03,Denmark,Retail/Grocery,1498,2011.99,False
+2025-11-03,Denmark,Gym & Office,617,845.6,False
+2025-11-03,Sweden,DTC Online,1355,1789.52,False
+2025-11-03,Sweden,Retail/Grocery,2073,2865.39,False
+2025-11-03,Sweden,Gym & Office,812,1108.18,False
+2025-11-10,Netherlands,DTC Online,1613,2212.85,False
+2025-11-10,Netherlands,Retail/Grocery,2994,3937.52,False
+2025-11-10,Netherlands,Gym & Office,801,1099.02,False
+2025-11-10,Denmark,DTC Online,1113,1460.82,False
+2025-11-10,Denmark,Retail/Grocery,1375,1864.55,False
+2025-11-10,Denmark,Gym & Office,697,957.83,False
+2025-11-10,Sweden,DTC Online,1401,1882.19,False
+2025-11-10,Sweden,Retail/Grocery,2017,2783.98,False
+2025-11-10,Sweden,Gym & Office,790,1056.53,False
+2025-11-17,Netherlands,DTC Online,1742,2367.28,False
+2025-11-17,Netherlands,Retail/Grocery,2956,4025.05,False
+2025-11-17,Netherlands,Gym & Office,835,1135.24,False
+2025-11-17,Denmark,DTC Online,1111,1527.91,False
+2025-11-17,Denmark,Retail/Grocery,1529,2111.33,False
+2025-11-17,Denmark,Gym & Office,655,878.41,False
+2025-11-17,Sweden,DTC Online,1389,1877.45,False
+2025-11-17,Sweden,Retail/Grocery,1875,2533.02,False
+2025-11-17,Sweden,Gym & Office,798,1086.07,True
+2025-11-24,Netherlands,DTC Online,1749,2366.81,False
+2025-11-24,Netherlands,Retail/Grocery,3179,4241.17,False
+2025-11-24,Netherlands,Gym & Office,824,1127.88,False
+2025-11-24,Denmark,DTC Online,1101,1487.02,False
+2025-11-24,Denmark,Retail/Grocery,1533,2124.35,False
+2025-11-24,Denmark,Gym & Office,662,867.17,False
+2025-11-24,Sweden,DTC Online,1261,1727.45,False
+2025-11-24,Sweden,Retail/Grocery,2043,2830.46,False
+2025-11-24,Sweden,Gym & Office,869,1154.42,False
+2025-12-01,Netherlands,DTC Online,1741,2394.78,False
+2025-12-01,Netherlands,Retail/Grocery,2930,3926.47,False
+2025-12-01,Netherlands,Gym & Office,794,1072.96,False
+2025-12-01,Denmark,DTC Online,1232,1658.64,False
+2025-12-01,Denmark,Retail/Grocery,1498,2011.63,False
+2025-12-01,Denmark,Gym & Office,666,879.14,False
+2025-12-01,Sweden,DTC Online,1265,1725.87,False
+2025-12-01,Sweden,Retail/Grocery,2054,2819.29,False
+2025-12-01,Sweden,Gym & Office,859,1169.14,False
+2025-12-08,Netherlands,DTC Online,1757,2435.68,False
+2025-12-08,Netherlands,Retail/Grocery,3084,4079.18,False
+2025-12-08,Netherlands,Gym & Office,850,1144.59,False
+2025-12-08,Denmark,DTC Online,1188,1606.6,False
+2025-12-08,Denmark,Retail/Grocery,1514,1986.58,False
+2025-12-08,Denmark,Gym & Office,684,946.76,False
+2025-12-08,Sweden,DTC Online,1441,1899.87,False
+2025-12-08,Sweden,Retail/Grocery,1977,2672.6,False
+2025-12-08,Sweden,Gym & Office,826,1106.7,False
+2025-12-15,Netherlands,DTC Online,1585,2093.9,False
+2025-12-15,Netherlands,Retail/Grocery,3104,4300.23,False
+2025-12-15,Netherlands,Gym & Office,828,1096.54,False
+2025-12-15,Denmark,DTC Online,1097,1485.17,True
+2025-12-15,Denmark,Retail/Grocery,1421,1916.18,False
+2025-12-15,Denmark,Gym & Office,676,903.72,False
+2025-12-15,Sweden,DTC Online,1445,1989.81,False
+2025-12-15,Sweden,Retail/Grocery,1938,2637.72,False
+2025-12-15,Sweden,Gym & Office,880,1162.98,False
+2025-12-22,Netherlands,DTC Online,1611,2191.13,False
+2025-12-22,Netherlands,Retail/Grocery,3103,4289.65,False
+2025-12-22,Netherlands,Gym & Office,799,1089.68,False
+2025-12-22,Denmark,DTC Online,1156,1522.07,False
+2025-12-22,Denmark,Retail/Grocery,1424,1937.41,False
+2025-12-22,Denmark,Gym & Office,664,904.21,False
+2025-12-22,Sweden,DTC Online,1288,1786.29,False
+2025-12-22,Sweden,Retail/Grocery,2154,2987.69,False
+2025-12-22,Sweden,Gym & Office,896,1209.79,True
+2025-12-29,Netherlands,DTC Online,1777,2403.54,False
+2025-12-29,Netherlands,Retail/Grocery,3063,4062.06,False
+2025-12-29,Netherlands,Gym & Office,914,1239.79,False
+2025-12-29,Denmark,DTC Online,1212,1618.57,False
+2025-12-29,Denmark,Retail/Grocery,1548,2144.2,False
+2025-12-29,Denmark,Gym & Office,654,857.69,False
+2025-12-29,Sweden,DTC Online,1361,1792.26,False
+2025-12-29,Sweden,Retail/Grocery,2094,2790.49,False
+2025-12-29,Sweden,Gym & Office,904,1195.08,False
+2026-01-05,Netherlands,DTC Online,1665,2188.26,False
+2026-01-05,Netherlands,Retail/Grocery,2816,3850.25,False
+2026-01-05,Netherlands,Gym & Office,757,1000.03,False
+2026-01-05,Denmark,DTC Online,1082,1499.4,False
+2026-01-05,Denmark,Retail/Grocery,1343,1784.73,False
+2026-01-05,Denmark,Gym & Office,616,832.03,False
+2026-01-05,Sweden,DTC Online,1388,1847.86,False
+2026-01-05,Sweden,Retail/Grocery,1959,2575.7,True
+2026-01-05,Sweden,Gym & Office,826,1142.78,True
+2026-01-12,Netherlands,DTC Online,1641,2226.8,False
+2026-01-12,Netherlands,Retail/Grocery,3109,4235.31,False
+2026-01-12,Netherlands,Gym & Office,823,1107.45,False
+2026-01-12,Denmark,DTC Online,1132,1554.14,False
+2026-01-12,Denmark,Retail/Grocery,1465,1938.38,False
+2026-01-12,Denmark,Gym & Office,694,962.83,False
+2026-01-12,Sweden,DTC Online,1206,1658.64,False
+2026-01-12,Sweden,Retail/Grocery,1990,2711.17,False
+2026-01-12,Sweden,Gym & Office,756,1046.43,False
+2026-01-19,Netherlands,DTC Online,1571,2143.75,False
+2026-01-19,Netherlands,Retail/Grocery,3164,4197.78,False
+2026-01-19,Netherlands,Gym & Office,790,1044.83,False
+2026-01-19,Denmark,DTC Online,1060,1395.77,False
+2026-01-19,Denmark,Retail/Grocery,1541,2108.44,False
+2026-01-19,Denmark,Gym & Office,690,915.34,False
+2026-01-19,Sweden,DTC Online,1372,1894.87,False
+2026-01-19,Sweden,Retail/Grocery,2006,2786.03,False
+2026-01-19,Sweden,Gym & Office,788,1074.16,False
+2026-01-26,Netherlands,DTC Online,1569,2176.48,False
+2026-01-26,Netherlands,Retail/Grocery,3216,4246.19,False
+2026-01-26,Netherlands,Gym & Office,837,1096.34,True
+2026-01-26,Denmark,DTC Online,1085,1469.65,False
+2026-01-26,Denmark,Retail/Grocery,1469,1970.39,False
+2026-01-26,Denmark,Gym & Office,693,944.04,False
+2026-01-26,Sweden,DTC Online,1399,1924.47,False
+2026-01-26,Sweden,Retail/Grocery,1855,2575.18,False
+2026-01-26,Sweden,Gym & Office,836,1120.93,False
+2026-02-02,Netherlands,DTC Online,1781,2474.14,False
+2026-02-02,Netherlands,Retail/Grocery,3046,4036.35,True
+2026-02-02,Netherlands,Gym & Office,881,1207.79,False
+2026-02-02,Denmark,DTC Online,1220,1616.52,False
+2026-02-02,Denmark,Retail/Grocery,1548,2128.47,False
+2026-02-02,Denmark,Gym & Office,726,1007.58,True
+2026-02-02,Sweden,DTC Online,1356,1853.01,False
+2026-02-02,Sweden,Retail/Grocery,1876,2606.19,False
+2026-02-02,Sweden,Gym & Office,796,1060.24,False
+2026-02-09,Netherlands,DTC Online,1616,2141.52,False
+2026-02-09,Netherlands,Retail/Grocery,3214,4365.71,False
+2026-02-09,Netherlands,Gym & Office,865,1184.98,False
+2026-02-09,Denmark,DTC Online,1269,1749.69,False
+2026-02-09,Denmark,Retail/Grocery,1581,2105.45,False
+2026-02-09,Denmark,Gym & Office,626,868.92,False
+2026-02-09,Sweden,DTC Online,1390,1896.84,False
+2026-02-09,Sweden,Retail/Grocery,1884,2532.28,False
+2026-02-09,Sweden,Gym & Office,874,1204.95,False
+2026-02-16,Netherlands,DTC Online,1810,2429.85,False
+2026-02-16,Netherlands,Retail/Grocery,3154,4256.77,False
+2026-02-16,Netherlands,Gym & Office,795,1087.5,True
+2026-02-16,Denmark,DTC Online,1273,1721.89,False
+2026-02-16,Denmark,Retail/Grocery,1507,2014.27,False
+2026-02-16,Denmark,Gym & Office,715,993.64,False
+2026-02-16,Sweden,DTC Online,1414,1961.33,False
+2026-02-16,Sweden,Retail/Grocery,1959,2617.55,True
+2026-02-16,Sweden,Gym & Office,875,1147.79,False
+2026-02-23,Netherlands,DTC Online,1594,2190.28,False
+2026-02-23,Netherlands,Retail/Grocery,3335,4433.95,False
+2026-02-23,Netherlands,Gym & Office,926,1275.04,False
+2026-02-23,Denmark,DTC Online,1203,1598.4,True
+2026-02-23,Denmark,Retail/Grocery,1567,2107.65,False
+2026-02-23,Denmark,Gym & Office,680,897.34,False
+2026-02-23,Sweden,DTC Online,1472,1972.58,False
+2026-02-23,Sweden,Retail/Grocery,2134,2929.76,True
+2026-02-23,Sweden,Gym & Office,904,1187.8,False
+2026-03-02,Netherlands,DTC Online,1887,2486.59,True
+2026-03-02,Netherlands,Retail/Grocery,3247,4475.48,False
+2026-03-02,Netherlands,Gym & Office,972,1305.2,False
+2026-03-02,Denmark,DTC Online,1388,1887.74,False
+2026-03-02,Denmark,Retail/Grocery,1696,2279.72,False
+2026-03-02,Denmark,Gym & Office,710,967.18,False
+2026-03-02,Sweden,DTC Online,1410,1905.47,False
+2026-03-02,Sweden,Retail/Grocery,2146,2812.32,False
+2026-03-02,Sweden,Gym & Office,968,1333.52,False
+2026-03-09,Netherlands,DTC Online,1803,2435.35,False
+2026-03-09,Netherlands,Retail/Grocery,3506,4767.42,False
+2026-03-09,Netherlands,Gym & Office,904,1187.02,False
+2026-03-09,Denmark,DTC Online,1352,1826.64,False
+2026-03-09,Denmark,Retail/Grocery,1676,2273.96,False
+2026-03-09,Denmark,Gym & Office,719,968.88,False
+2026-03-09,Sweden,DTC Online,1483,2058.54,False
+2026-03-09,Sweden,Retail/Grocery,2360,3118.06,False
+2026-03-09,Sweden,Gym & Office,1008,1365.65,True
+2026-03-16,Netherlands,DTC Online,1881,2611.95,False
+2026-03-16,Netherlands,Retail/Grocery,3367,4427.74,False
+2026-03-16,Netherlands,Gym & Office,961,1312.28,False
+2026-03-16,Denmark,DTC Online,1383,1906.48,False
+2026-03-16,Denmark,Retail/Grocery,1679,2239.4,False
+2026-03-16,Denmark,Gym & Office,718,991.17,False
+2026-03-16,Sweden,DTC Online,1542,2134.15,False
+2026-03-16,Sweden,Retail/Grocery,2386,3214.63,False
+2026-03-16,Sweden,Gym & Office,961,1318.24,False
+2026-03-23,Netherlands,DTC Online,2035,2726.8,False
+2026-03-23,Netherlands,Retail/Grocery,3741,4900.88,True
+2026-03-23,Netherlands,Gym & Office,948,1284.0,False
+2026-03-23,Denmark,DTC Online,1336,1817.81,False
+2026-03-23,Denmark,Retail/Grocery,1695,2353.51,False
+2026-03-23,Denmark,Gym & Office,744,987.46,False
+2026-03-23,Sweden,DTC Online,1471,2027.26,False
+2026-03-23,Sweden,Retail/Grocery,2214,2930.81,False
+2026-03-23,Sweden,Gym & Office,908,1250.18,False
+2026-03-30,Netherlands,DTC Online,1998,2759.61,False
+2026-03-30,Netherlands,Retail/Grocery,3409,4590.06,False
+2026-03-30,Netherlands,Gym & Office,955,1263.83,False
+2026-03-30,Denmark,DTC Online,1421,1932.53,False
+2026-03-30,Denmark,Retail/Grocery,1803,2378.33,False
+2026-03-30,Denmark,Gym & Office,729,965.82,False
+2026-03-30,Sweden,DTC Online,1609,2148.42,False
+2026-03-30,Sweden,Retail/Grocery,2391,3309.39,False
+2026-03-30,Sweden,Gym & Office,989,1363.54,False
+2026-04-06,Netherlands,DTC Online,2061,2740.14,False
+2026-04-06,Netherlands,Retail/Grocery,3863,5098.17,False
+2026-04-06,Netherlands,Gym & Office,1107,1493.46,False
+2026-04-06,Denmark,DTC Online,1588,2181.23,False
+2026-04-06,Denmark,Retail/Grocery,1849,2479.39,False
+2026-04-06,Denmark,Gym & Office,903,1209.85,False
+2026-04-06,Sweden,DTC Online,1657,2265.47,False
+2026-04-06,Sweden,Retail/Grocery,2613,3624.01,False
+2026-04-06,Sweden,Gym & Office,1106,1505.47,False
+2026-04-13,Netherlands,DTC Online,2248,2981.48,False
+2026-04-13,Netherlands,Retail/Grocery,3995,5307.3,False
+2026-04-13,Netherlands,Gym & Office,1085,1453.95,False
+2026-04-13,Denmark,DTC Online,1611,2142.82,False
+2026-04-13,Denmark,Retail/Grocery,2042,2722.8,False
+2026-04-13,Denmark,Gym & Office,835,1096.22,False
+2026-04-13,Sweden,DTC Online,1711,2303.08,False
+2026-04-13,Sweden,Retail/Grocery,2579,3481.14,False
+2026-04-13,Sweden,Gym & Office,1014,1364.11,False
+2026-04-20,Netherlands,DTC Online,2058,2845.23,False
+2026-04-20,Netherlands,Retail/Grocery,4049,5481.45,True
+2026-04-20,Netherlands,Gym & Office,1064,1412.94,False
+2026-04-20,Denmark,DTC Online,1501,2031.95,False
+2026-04-20,Denmark,Retail/Grocery,2030,2699.4,False
+2026-04-20,Denmark,Gym & Office,915,1260.85,False
+2026-04-20,Sweden,DTC Online,1796,2371.92,False
+2026-04-20,Sweden,Retail/Grocery,2741,3709.92,False
+2026-04-20,Sweden,Gym & Office,1152,1534.84,False
+2026-04-27,Netherlands,DTC Online,2396,3321.12,False
+2026-04-27,Netherlands,Retail/Grocery,4238,5553.74,False
+2026-04-27,Netherlands,Gym & Office,1197,1659.73,False
+2026-04-27,Denmark,DTC Online,1477,2020.67,False
+2026-04-27,Denmark,Retail/Grocery,1901,2579.75,False
+2026-04-27,Denmark,Gym & Office,878,1207.66,False
+2026-04-27,Sweden,DTC Online,1658,2284.74,False
+2026-04-27,Sweden,Retail/Grocery,2852,3831.18,False
+2026-04-27,Sweden,Gym & Office,1173,1538.9,False
+2026-05-04,Netherlands,DTC Online,2848,3799.95,False
+2026-05-04,Netherlands,Retail/Grocery,4927,6714.84,False
+2026-05-04,Netherlands,Gym & Office,1285,1727.02,False
+2026-05-04,Denmark,DTC Online,1948,2659.86,False
+2026-05-04,Denmark,Retail/Grocery,2437,3303.29,True
+2026-05-04,Denmark,Gym & Office,1006,1396.99,False
+2026-05-04,Sweden,DTC Online,2174,2987.58,False
+2026-05-04,Sweden,Retail/Grocery,3263,4376.21,False
+2026-05-04,Sweden,Gym & Office,1440,1893.11,False
+2026-05-11,Netherlands,DTC Online,2692,3596.88,False
+2026-05-11,Netherlands,Retail/Grocery,5065,6757.6,False
+2026-05-11,Netherlands,Gym & Office,1389,1838.88,False
+2026-05-11,Denmark,DTC Online,1911,2506.61,False
+2026-05-11,Denmark,Retail/Grocery,2576,3453.79,False
+2026-05-11,Denmark,Gym & Office,1038,1403.35,False
+2026-05-11,Sweden,DTC Online,2116,2772.8,False
+2026-05-11,Sweden,Retail/Grocery,3456,4635.12,False
+2026-05-11,Sweden,Gym & Office,1271,1707.45,False
+2026-05-18,Netherlands,DTC Online,2669,3690.4,False
+2026-05-18,Netherlands,Retail/Grocery,5277,7042.63,False
+2026-05-18,Netherlands,Gym & Office,1394,1843.37,False
+2026-05-18,Denmark,DTC Online,1833,2430.45,False
+2026-05-18,Denmark,Retail/Grocery,2414,3200.57,False
+2026-05-18,Denmark,Gym & Office,1071,1474.01,False
+2026-05-18,Sweden,DTC Online,2086,2787.19,False
+2026-05-18,Sweden,Retail/Grocery,3256,4385.76,True
+2026-05-18,Sweden,Gym & Office,1270,1729.55,False
+2026-05-25,Netherlands,DTC Online,2665,3671.71,False
+2026-05-25,Netherlands,Retail/Grocery,4922,6773.65,False
+2026-05-25,Netherlands,Gym & Office,1348,1784.81,False
+2026-05-25,Denmark,DTC Online,1880,2520.44,False
+2026-05-25,Denmark,Retail/Grocery,2521,3320.76,False
+2026-05-25,Denmark,Gym & Office,1007,1390.9,False
+2026-05-25,Sweden,DTC Online,2320,3139.09,False
+2026-05-25,Sweden,Retail/Grocery,3051,4174.83,False
+2026-05-25,Sweden,Gym & Office,1455,1953.79,False
+2026-06-01,Netherlands,DTC Online,2887,3866.75,False
+2026-06-01,Netherlands,Retail/Grocery,5638,7738.95,False
+2026-06-01,Netherlands,Gym & Office,1454,1928.44,True
+2026-06-01,Denmark,DTC Online,1976,2689.83,False
+2026-06-01,Denmark,Retail/Grocery,2731,3652.27,False
+2026-06-01,Denmark,Gym & Office,1162,1525.19,False
+2026-06-01,Sweden,DTC Online,2541,3355.53,False
+2026-06-01,Sweden,Retail/Grocery,3667,4938.97,False
+2026-06-01,Sweden,Gym & Office,1575,2153.5,False
+2026-06-08,Netherlands,DTC Online,3076,4097.57,False
+2026-06-08,Netherlands,Retail/Grocery,5972,8113.95,False
+2026-06-08,Netherlands,Gym & Office,1452,1988.6,False
+2026-06-08,Denmark,DTC Online,2208,2893.38,False
+2026-06-08,Denmark,Retail/Grocery,2737,3623.55,False
+2026-06-08,Denmark,Gym & Office,1305,1765.16,False
+2026-06-08,Sweden,DTC Online,2293,3120.59,False
+2026-06-08,Sweden,Retail/Grocery,3805,5186.08,False
+2026-06-08,Sweden,Gym & Office,1592,2141.98,False
+2026-06-15,Netherlands,DTC Online,2883,3863.42,False
+2026-06-15,Netherlands,Retail/Grocery,5468,7562.84,False
+2026-06-15,Netherlands,Gym & Office,1433,1879.76,True
+2026-06-15,Denmark,DTC Online,2272,3100.32,True
+2026-06-15,Denmark,Retail/Grocery,2982,3928.26,False
+2026-06-15,Denmark,Gym & Office,1267,1733.44,True
+2026-06-15,Sweden,DTC Online,2491,3426.53,False
+2026-06-15,Sweden,Retail/Grocery,3804,5173.81,False
+2026-06-15,Sweden,Gym & Office,1527,2052.53,False
+2026-06-22,Netherlands,DTC Online,2927,3909.57,True
+2026-06-22,Netherlands,Retail/Grocery,5869,7691.15,False
+2026-06-22,Netherlands,Gym & Office,1492,2033.29,False
+2026-06-22,Denmark,DTC Online,2216,2909.74,False
+2026-06-22,Denmark,Retail/Grocery,2754,3777.58,False
+2026-06-22,Denmark,Gym & Office,1339,1830.7,False
+2026-06-22,Sweden,DTC Online,2668,3616.76,False
+2026-06-22,Sweden,Retail/Grocery,3506,4683.22,False
+2026-06-22,Sweden,Gym & Office,1534,2123.65,False
+2026-06-29,Netherlands,DTC Online,2957,3914.19,False
+2026-06-29,Netherlands,Retail/Grocery,5932,8237.89,False
+2026-06-29,Netherlands,Gym & Office,1462,1916.58,False
+2026-06-29,Denmark,DTC Online,2167,2927.39,False
+2026-06-29,Denmark,Retail/Grocery,2811,3841.44,True
+2026-06-29,Denmark,Gym & Office,1153,1580.73,False
+2026-06-29,Sweden,DTC Online,2407,3235.51,False
+2026-06-29,Sweden,Retail/Grocery,3516,4643.38,False
+2026-06-29,Sweden,Gym & Office,1496,2004.54,False
