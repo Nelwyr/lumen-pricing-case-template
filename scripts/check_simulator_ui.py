@@ -15,6 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--browser", default=r"C:\Program Files\Google\Chrome\Application\chrome.exe")
+    parser.add_argument("--page", default="tests/simulator-ui.browser.html")
+    parser.add_argument("--screenshot", help="Optional screenshot output path")
+    parser.add_argument("--window-size", default="1200,1000")
     args = parser.parse_args()
     requests = []
 
@@ -34,7 +37,9 @@ def main():
                 [args.browser, "--headless", "--disable-gpu", "--no-first-run",
                  "--no-default-browser-check", f"--user-data-dir={profile}",
                  "--dump-dom", "--virtual-time-budget=15000",
-                 f"http://127.0.0.1:{server.server_port}/tests/simulator-ui.browser.html"],
+                 f"--window-size={args.window_size}",
+                 *([f"--screenshot={Path(args.screenshot).resolve()}"] if args.screenshot else []),
+                 f"http://127.0.0.1:{server.server_port}/{args.page}"],
                 capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60,
             )
             match = re.search(r'<pre id="report"[^>]*>(.*?)</pre>', result.stdout, re.S)

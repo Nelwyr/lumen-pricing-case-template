@@ -1,7 +1,7 @@
 """Prepare privacy-safe, application-ready extracts from the case data.
 
 The customer extract deliberately excludes respondent IDs, names, and e-mail
-addresses. It contains only metrics aggregated at the segment-by-city level.
+addresses. It contains only city and segment-by-city aggregates.
 """
 
 from __future__ import annotations
@@ -27,6 +27,7 @@ CUSTOMER_OUTPUT = OUTPUT_DIR / "customer_segment_city_aggregates.csv"
 CITY_OUTPUT = OUTPUT_DIR / "customer_city_aggregates.csv"
 SALES_OUTPUT = OUTPUT_DIR / "historical_sales_weekly_deduplicated.csv"
 SIMULATOR_ASSUMPTIONS_OUTPUT = OUTPUT_DIR / "simulator_assumptions.json"
+CITY_PRIORITISATION_OUTPUT = OUTPUT_DIR / "city_prioritisation.json"
 
 CHANNELS = ("DTC Online", "Retail/Grocery", "Gym & Office")
 NUMERIC_FIELDS = (
@@ -76,6 +77,10 @@ def summarise_group(
     }
     if segment is not None:
         result["segment"] = segment
+    else:
+        result["wellness_respondent_count"] = sum(
+            row["segment"] == "Urban Wellness Professionals" for row in group
+        )
     for field in NUMERIC_FIELDS:
         result[f"avg_{field}"] = percentage(mean(float(row[field]) for row in group))
     for channel in CHANNELS:
@@ -124,7 +129,7 @@ def aggregate_customer_survey() -> int:
     for row in rows:
         city_groups[row["city"]].append(row)
     with CITY_OUTPUT.open("w", encoding="utf-8", newline="") as destination:
-        writer = csv.DictWriter(destination, fieldnames=["city", *metrics_fields])
+        writer = csv.DictWriter(destination, fieldnames=["city", *metrics_fields, "wellness_respondent_count"])
         writer.writeheader()
         for city, group in sorted(city_groups.items()):
             writer.writerow(summarise_group(group, city=city))
@@ -238,11 +243,68 @@ def write_simulator_assumptions() -> None:
         destination.write("\n")
 
 
+def write_city_prioritisation() -> None:
+    """Join city aggregates to Exhibit 1; keep segment diagnostics separate."""
+    year = 2026
+    with (DATA_DIR / "market_context.csv").open(encoding="utf-8", newline="") as source:
+        market_rows = [row for row in csv.DictReader(source) if int(row["year"]) == year]
+    national_market = sum(
+        float(row["value"]) for row in market_rows
+        if row["dimension_type"] == "subcategory" and row["metric"] == "market_size_eur"
+    )
+    regional = defaultdict(dict)
+    for row in market_rows:
+        if row["dimension_type"] == "region":
+            if row["metric"] in regional[row["name"]]:
+                raise ValueError(f"Duplicate regional metric: {row['name']} / {row['metric']}")
+            regional[row["name"]][row["metric"]] = float(row["value"])
+    if national_market <= 0 or abs(sum(
+        row["population_share_of_market"] for row in regional.values()
+    ) - 1) > 1e-9:
+        raise ValueError("Invalid national market or regional shares")
+    with CITY_OUTPUT.open(encoding="utf-8", newline="") as source:
+        city_rows = list(csv.DictReader(source))
+    if set(regional) != {row["city"] for row in city_rows}:
+        raise ValueError("City aggregates and regional market data must match")
+    cities = []
+    for row in city_rows:
+        region = regional[row["city"]]
+        count = int(row["respondent_count"])
+        wellness_count = int(row["wellness_respondent_count"])
+        cities.append({
+            "city": row["city"],
+            "respondentCount": count,
+            "reliability": row["sample_reliability"],
+            "purchaseIntent": float(row["avg_lumen_purchase_intent_1_10"]),
+            "wellnessRespondentCount": wellness_count,
+            "wellnessDensity": wellness_count / count,
+            "marketSizeEur": national_market * region["population_share_of_market"],
+            "growth": region["regional_cagr"],
+        })
+    with CUSTOMER_OUTPUT.open(encoding="utf-8", newline="") as source:
+        diagnostics = [{
+            "city": row["city"], "segment": row["segment"],
+            "respondentCount": int(row["respondent_count"]),
+            "reliability": row["sample_reliability"],
+            "purchaseIntent": float(row["avg_lumen_purchase_intent_1_10"]),
+        } for row in csv.DictReader(source)]
+    with CITY_PRIORITISATION_OUTPUT.open("w", encoding="utf-8") as destination:
+        json.dump({
+            "year": year, "nationalMarketEur": national_market,
+            "sources": ["market_context.csv (Exhibit 1, illustrative regional assumptions)",
+                        "customer_city_aggregates.csv", "customer_segment_city_aggregates.csv"],
+            "wellnessProxy": "Urban Wellness Professionals / all respondents in each city",
+            "cities": cities, "segmentDiagnostics": diagnostics,
+        }, destination, indent=2)
+        destination.write("\n")
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     customer_rows = aggregate_customer_survey()
     sales_rows, unique_sales_rows = deduplicate_sales()
     write_simulator_assumptions()
+    write_city_prioritisation()
     print(
         f"Aggregated {customer_rows} customer responses into "
         f"{CUSTOMER_OUTPUT.name} and {CITY_OUTPUT.name}."
@@ -252,6 +314,7 @@ def main() -> None:
         f"wrote {unique_sales_rows} rows to {SALES_OUTPUT.name}."
     )
     print(f"Wrote aggregate simulator assumptions to {SIMULATOR_ASSUMPTIONS_OUTPUT.name}.")
+    print(f"Wrote city ranking inputs and separate diagnostics to {CITY_PRIORITISATION_OUTPUT.name}.")
 
 
 if __name__ == "__main__":

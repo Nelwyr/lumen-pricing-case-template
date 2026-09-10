@@ -1,7 +1,7 @@
-city,respondent_count,sample_reliability,avg_age,avg_purchase_frequency_per_month,avg_monthly_beverage_spend_eur,avg_price_sensitivity_1_10,avg_lumen_purchase_intent_1_10,most_preferred_channel,pct_prefer_dtc_online,pct_prefer_retail_grocery,pct_prefer_gym_&_office,pct_aware_pulsup,pct_aware_matelibre,pct_aware_voltfit,pct_aware_rootandrise
-Berlin,81,reliable,29.7,6.2,20.0,5.6,7.4,Retail/Grocery,35.8,48.1,16.0,72.8,44.4,43.2,32.1
-Cologne,45,reliable,28.6,6.0,18.1,6.0,7.0,Retail/Grocery,28.9,44.4,26.7,57.8,57.8,35.6,26.7
-Frankfurt,32,reliable,28.1,5.9,20.9,6.1,7.2,Retail/Grocery,21.9,53.1,25.0,53.1,56.2,62.5,28.1
-Hamburg,48,reliable,28.1,6.3,20.3,5.7,7.5,Retail/Grocery,22.9,54.2,22.9,70.8,39.6,47.9,31.2
-Munich,57,reliable,29.6,6.4,19.9,5.8,7.3,Retail/Grocery,31.6,43.9,24.6,63.2,49.1,49.1,31.6
-Other Germany,157,reliable,28.2,6.1,19.2,6.0,7.0,Retail/Grocery,26.1,43.3,30.6,60.5,43.9,44.6,26.8
+city,respondent_count,sample_reliability,avg_age,avg_purchase_frequency_per_month,avg_monthly_beverage_spend_eur,avg_price_sensitivity_1_10,avg_lumen_purchase_intent_1_10,most_preferred_channel,pct_prefer_dtc_online,pct_prefer_retail_grocery,pct_prefer_gym_&_office,pct_aware_pulsup,pct_aware_matelibre,pct_aware_voltfit,pct_aware_rootandrise,wellness_respondent_count
+Berlin,81,reliable,29.7,6.2,20.0,5.6,7.4,Retail/Grocery,35.8,48.1,16.0,72.8,44.4,43.2,32.1,27
+Cologne,45,reliable,28.6,6.0,18.1,6.0,7.0,Retail/Grocery,28.9,44.4,26.7,57.8,57.8,35.6,26.7,16
+Frankfurt,32,reliable,28.1,5.9,20.9,6.1,7.2,Retail/Grocery,21.9,53.1,25.0,53.1,56.2,62.5,28.1,6
+Hamburg,48,reliable,28.1,6.3,20.3,5.7,7.5,Retail/Grocery,22.9,54.2,22.9,70.8,39.6,47.9,31.2,13
+Munich,57,reliable,29.6,6.4,19.9,5.8,7.3,Retail/Grocery,31.6,43.9,24.6,63.2,49.1,49.1,31.6,13
+Other Germany,157,reliable,28.2,6.1,19.2,6.0,7.0,Retail/Grocery,26.1,43.3,30.6,60.5,43.9,44.6,26.8,37

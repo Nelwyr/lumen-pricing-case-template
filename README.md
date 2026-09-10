@@ -46,4 +46,18 @@ These questions aren't here to slow you down — they're part of what's being ev
 
 ## Our Approach
 
-*[To be filled in by the team at the end.]*
+The simulator compares price and channel choices through contribution, acquisition and return, with an explicit leadership trade-off. City prioritisation answers where to begin: change the relative importance of market size, regional growth and wellness survey share to see which cities move up or down. The index supports a discussion about priorities; it does not forecast city sales or ROI.
+
+### City prioritisation
+
+Serve the repository over HTTP and open `index.html#cities`. No framework, build or external API is required. Regenerate prepared inputs with `py -3 scripts/prepare_app_data.py`.
+
+- Market size is the 2026 national functional-beverage total (€9.1bn) multiplied by Exhibit 1's illustrative regional share. Growth uses that exhibit's regional CAGR.
+- Wellness density is explicitly a proxy: Urban Wellness Professionals divided by all survey respondents in the city. The preparation script writes this count into the city aggregate. It measures sample composition, not population or venue density.
+- Each criterion is min–max scaled across the five named cities to 0–100. The weighted sum uses automatically normalised slider values. Equal weights are the starting comparison; ties share ranks, and all-zero weights clear the ranking. A constant criterion scores 50 for every city.
+- City-level aggregates alone supply survey inputs to the score. All segment averages remain diagnostic and show their count and reliability: n≥15 reliable, 8–14 directional, below 8 insufficient (intent withheld). A candidate city below n=15 blocks the ranking. These flags do not establish survey representativeness or statistical confidence.
+- Other Germany is contextual only because it combines multiple places. It is excluded from both ranking and normalisation.
+
+The browser loads only prepared files under `data/app_data/`. The new `city_prioritisation.json` joins city aggregates and regional assumptions, with segment diagnostics stored separately. It contains no individual survey records or direct identifiers. The original case CSVs remain in this repository; the app's limited fetches do not constitute an access-control boundary for a deployed file server.
+
+Browser checks: `py -3 scripts/check_simulator_ui.py` for the simulator and `py -3 scripts/check_simulator_ui.py --page tests/city-ui.browser.html` for cities. To check an actual 390px iframe viewport, use `--page tests/city-ui.browser.html?viewport=390`. The runner uses installed Chrome without added dependencies.
