@@ -67,9 +67,9 @@
             <p class="eyebrow">Core tool</p>
             <h1 id="simulator-title">ROI / scenario simulator</h1>
           </div>
-          <span class="status-pill" data-data-status>Connecting to aggregated data…</span>
+          <span class="status-pill" id="simulator-status" role="status">Loading simulator…</span>
         </div>
-        <p class="lede">Configure a launch scenario; calculations will be added in the next step.</p>
+        <p class="lede">Adjust price, channel mix, marketing budget and CAC to see the return and the trade-off you are choosing.</p>
 
         <div class="simulator-layout">
           <section class="panel controls-panel" aria-labelledby="scenario-inputs-title">
@@ -77,12 +77,36 @@
               <p class="eyebrow">Inputs</p>
               <h2 id="scenario-inputs-title">Scenario</h2>
             </div>
-            <div class="control-grid">
-              <label>Retail price <span>To be configured</span><div class="control-placeholder"></div></label>
-              <label>Channel mix <span>To be configured</span><div class="control-placeholder"></div></label>
-              <label>Marketing budget <span>To be configured</span><div class="control-placeholder"></div></label>
-              <label>Launch month <span>To be configured</span><div class="control-placeholder"></div></label>
-            </div>
+            <form id="scenario-form">
+              <fieldset id="scenario-controls" disabled>
+                <legend class="sr-only">Launch scenario inputs</legend>
+                <div class="control-grid">
+                  <label for="price">Retail price (€)
+                    <span>Acceptance tested from €1.79 to €2.59</span>
+                    <input id="price" name="price" type="number" min="0.01" step="0.01" value="2.29" required>
+                  </label>
+                  <label for="budget">Marketing budget (€)
+                    <span>Total acquisition spend</span>
+                    <input id="budget" name="budget" type="number" min="0.01" step="0.01" value="120000" required>
+                  </label>
+                  <label for="cac">CAC (€ / acquired customer)
+                    <span>Your scenario assumption</span>
+                    <input id="cac" name="cac" type="number" min="0.01" step="0.01" value="44" required>
+                  </label>
+                </div>
+                <fieldset class="channel-mix">
+                  <legend>Channel mix · share of units (%)</legend>
+                  <div class="control-grid">
+                    <label for="mix-dtc">DTC Online<input id="mix-dtc" type="number" min="0" max="100" step="0.1" value="40" required></label>
+                    <label for="mix-retail">Retail/Grocery<input id="mix-retail" type="number" min="0" max="100" step="0.1" value="30" required></label>
+                    <label for="mix-gym">Gym &amp; Office<input id="mix-gym" type="number" min="0" max="100" step="0.1" value="30" required></label>
+                  </div>
+                  <p id="mix-total" class="input-help">Total: 100%. Shares must add up to 100%.</p>
+                </fieldset>
+              </fieldset>
+              <p id="scenario-error" class="validation-message" role="alert" hidden></p>
+              <button id="retry-simulator" class="button button-secondary" type="button" hidden>Retry loading</button>
+            </form>
           </section>
 
           <section class="panel results-panel" aria-labelledby="scenario-results-title">
@@ -90,13 +114,30 @@
               <p class="eyebrow">Output</p>
               <h2 id="scenario-results-title">Scenario results</h2>
             </div>
-            <div class="metric-grid" aria-label="Scenario metrics coming soon">
-              <div><span>Unit contribution</span><strong>—</strong></div>
-              <div><span>Estimated CAC</span><strong>—</strong></div>
-              <div><span>LTV : CAC</span><strong>—</strong></div>
-              <div><span>Estimated payback</span><strong>—</strong></div>
+            <div id="scenario-output" aria-live="polite" aria-atomic="true">
+              <div class="metric-grid" aria-label="Calculated scenario metrics">
+                <div><span>Unit contribution</span><strong data-metric="contribution">—</strong></div>
+                <div><span>CAC assumption</span><strong data-metric="cac">—</strong></div>
+                <div><span>LTV : CAC</span><strong data-metric="ratio">—</strong></div>
+                <div><span>Estimated payback</span><strong data-metric="payback">—</strong></div>
+                <div><span>Estimated acceptance</span><strong data-metric="acceptance">—</strong></div>
+                <div><span>Expected customers acquired</span><strong data-metric="customers">—</strong></div>
+                <div><span>Contribution LTV</span><strong data-metric="ltv">—</strong></div>
+                <div><span>Gap to 3:1 target</span><strong data-metric="gap">—</strong></div>
+              </div>
+              <p id="target-status" class="target-status"></p>
+              <p id="scenario-warning" class="validation-message" hidden></p>
+              <div class="decision-note">
+                <h3>Who this serves — and what we give up</h3>
+                <p id="scenario-tradeoff">Your scenario assessment will appear once the inputs are ready.</p>
+              </div>
             </div>
-            <p class="empty-state">Results will be calculated at full precision and rounded only for display.</p>
+            <details class="model-notes">
+              <summary>How to read these results</summary>
+              <p>Clients acquired = budget / CAC. Acceptance is a separate survey estimate; it is not applied a second time to customer acquisition. Increasing budget scales customers, not per-customer returns.</p>
+              <p>LTV and payback assume stable monthly purchases and an extrapolated customer lifetime calibrated from the historical LTV treated as net revenue. These are scenario assumptions, not observed German retention.</p>
+              <p>The leadership assessment uses €2.19 as a premium-price proxy for Jonas and the 3:1 return target for Elena. It does not measure brand perception or prove a launch recommendation. Under a fixed lifetime, LTV:CAC and payback are mathematically linked.</p>
+            </details>
           </section>
         </div>
 
@@ -141,6 +182,6 @@
       <span>LUMEN Strategy &amp; Analytics</span>
       <span>App data sources: anonymised aggregates and deduplicated sales only.</span>
     </footer>
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

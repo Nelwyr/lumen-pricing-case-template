@@ -1,3 +1,5 @@
+import { initialiseSimulator } from "./simulator-ui.js";
+
 const APPROVED_DATA_SOURCES = [
   "data/app_data/customer_city_aggregates.csv",
   "data/app_data/customer_segment_city_aggregates.csv",
@@ -17,7 +19,8 @@ function renderRoute() {
     view.hidden = view.dataset.view !== route;
   });
   document.querySelectorAll("[data-route-link]").forEach((link) => {
-    link.toggleAttribute("aria-current", link.dataset.routeLink === route);
+    if (link.dataset.routeLink === route) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
   });
   document.title = `${route === "home" ? "Home" : route === "simulator" ? "ROI scenarios" : "City prioritisation"} — LUMEN`;
 }
@@ -46,4 +49,5 @@ window.addEventListener("DOMContentLoaded", () => {
   }
   renderRoute();
   checkApprovedDataSources();
+  initialiseSimulator();
 });
