@@ -1,5 +1,6 @@
 import { initialiseSimulator } from "./simulator-ui.js";
 import { initialiseCities } from "./city-ui.js";
+import { initialiseLaunchWindow } from "./launch-window.js";
 
 const routes = new Set(["home", "simulator", "cities"]);
 
@@ -28,4 +29,5 @@ window.addEventListener("DOMContentLoaded", () => {
   renderRoute();
   initialiseCities();
   initialiseSimulator();
+  initialiseLaunchWindow();
 });
