@@ -161,26 +161,86 @@
             <p class="eyebrow">Where to launch</p>
             <h1 id="cities-title">City prioritisation</h1>
           </div>
-          <span class="status-pill" data-data-status>Connecting to aggregated data…</span>
+          <span class="status-pill" id="city-status" role="status">Loading city data…</span>
         </div>
-        <p class="lede">Rankings will use city-level aggregates. Segment insights will include their sample reliability level.</p>
+        <p class="lede">Choose what matters for the first launch. Compare five cities on market size, growth and wellness survey share, and see the trade-off as you change the weights.</p>
 
-        <section class="panel city-panel" aria-labelledby="city-ranking-title">
+        <section class="panel city-weights" aria-labelledby="city-weights-title">
           <div class="panel-heading">
-            <p class="eyebrow">Rankings coming soon</p>
-            <h2 id="city-ranking-title">Candidate cities</h2>
+            <p class="eyebrow">Your criteria</p>
+            <h2 id="city-weights-title">What should lead the decision?</h2>
           </div>
-          <div class="table-placeholder" role="table" aria-label="City rankings placeholder">
-            <div role="row" class="table-header"><span>Rank</span><span>City</span><span>Customer signal</span><span>Reliability</span></div>
-            <div class="empty-state">City-level aggregates will appear here, with no individual responses exposed.</div>
-          </div>
+          <form id="city-form">
+            <fieldset id="city-controls" disabled>
+              <legend class="sr-only">Criterion importance, from 0 to 100; weights are normalised automatically</legend>
+              <div class="city-weight-grid">
+                <label for="weight-marketSizeEur"><span class="criterion-label"><i class="criterion-0"></i>Market size <output id="share-marketSizeEur" for="weight-marketSizeEur">—</output></span>
+                  <span class="weight-description">National market × illustrative regional share</span>
+                  <input id="weight-marketSizeEur" type="range" min="0" max="100" step="1" value="50" aria-describedby="city-weight-help">
+                </label>
+                <label for="weight-growth"><span class="criterion-label"><i class="criterion-1"></i>Regional growth <output id="share-growth" for="weight-growth">—</output></span>
+                  <span class="weight-description">Regional CAGR assumption from Exhibit 1</span>
+                  <input id="weight-growth" type="range" min="0" max="100" step="1" value="50" aria-describedby="city-weight-help">
+                </label>
+                <label for="weight-wellnessDensity"><span class="criterion-label"><i class="criterion-2"></i>Wellness density <output id="share-wellnessDensity" for="weight-wellnessDensity">—</output></span>
+                  <span class="weight-description">Proxy: wellness respondents / city sample</span>
+                  <input id="weight-wellnessDensity" type="range" min="0" max="100" step="1" value="50" aria-describedby="city-weight-help city-proxy-note">
+                </label>
+              </div>
+              <div class="city-weight-footer">
+                <p id="city-weight-help" class="input-help">Move importance from 0 to 100. Displayed weights divide each importance by their total. Equal weights are a starting point, not a recommendation.</p>
+                <button id="city-reset-weights" type="button" class="button button-secondary">Reset to equal weights</button>
+              </div>
+            </fieldset>
+          </form>
+          <p id="city-weight-summary" class="sr-only" aria-live="polite"></p>
+          <p id="city-error" class="validation-message" role="alert" hidden></p>
+          <button id="retry-cities" type="button" class="button button-secondary" hidden>Retry loading</button>
         </section>
+
+        <div id="city-results" hidden>
+          <section class="panel city-panel" aria-labelledby="city-ranking-title">
+            <div class="panel-heading">
+              <p class="eyebrow">Relative priorities</p>
+              <h2 id="city-ranking-title">Candidate cities</h2>
+              <p id="city-ranking-summary" aria-live="polite"></p>
+            </div>
+            <div class="city-table-scroll" role="region" aria-label="City ranking table; scroll horizontally on small screens" tabindex="0">
+              <table class="city-table">
+                <caption class="sr-only">Weighted city ranking with contributions, raw inputs and change from equal weights</caption>
+                <thead><tr><th scope="col">Rank</th><th scope="col">City / sample</th><th scope="col">Priority index / 100</th><th scope="col">Market size<br><small>2026 · illustrative</small></th><th scope="col">Growth<br><small>CAGR</small></th><th scope="col">Wellness<br><small>Survey share</small></th><th scope="col">Rank change<br><small>vs equal weights</small></th></tr></thead>
+                <tbody id="city-ranking-body"></tbody>
+              </table>
+            </div>
+            <p class="input-help">Bar colours match the three criteria above. Contributions add to the index before display rounding. Ties share a rank; tied cities appear alphabetically. Select a city to inspect its survey evidence.</p>
+            <div class="decision-note city-tradeoff"><h3>The trade-off</h3><p id="city-tradeoff"></p></div>
+            <details class="model-notes">
+              <summary>Scoring, sources and limits</summary>
+              <p id="city-source-context"></p>
+              <p>Each criterion is scaled across these five cities: 100 × (city value − lowest value) / (highest − lowest). The index is the sum of the three scaled values × your normalised weights. A criterion identical across all cities gets 50 for everyone. Zero means lowest in this comparison, not no opportunity.</p>
+              <p id="city-proxy-note">Wellness density is a proxy: the share of Urban Wellness Professionals among all respondents in each city. This is survey composition, not a measured population share or a count of wellness venues. The survey has not been population-weighted. City purchase intent is context only.</p>
+              <p>Reliability is a sample-size flag, not statistical confidence: n ≥ 15 reliable; n = 8–14 directional; n &lt; 8 insufficient. Only city-level inputs enter the ranking. All segment-level averages are diagnostic only; intent is withheld for n &lt; 8. Ranking is unavailable if a candidate city's total sample falls below 15.</p>
+              <p>The regional shares and growth rates are illustrative case assumptions. This screen does not estimate LUMEN market share, city acquisition costs, distribution access or city ROI. Small score gaps do not establish a meaningful difference.</p>
+            </details>
+            <p id="city-other-context" class="input-help"></p>
+          </section>
+
+          <section class="panel city-diagnostics" aria-labelledby="city-diagnostic-title">
+            <div class="city-diagnostic-heading">
+              <div><p class="eyebrow">Evidence behind the comparison</p><h2 id="city-diagnostic-title">City survey diagnostics</h2></div>
+              <label for="city-diagnostic-select">Inspect city <select id="city-diagnostic-select"></select></label>
+            </div>
+            <p id="city-survey-summary"></p>
+            <p class="input-help">Segment averages below never change the ranking. Small samples limit interpretation even when a city total passes the reliability threshold.</p>
+            <div id="city-segment-diagnostics" class="city-segment-grid"></div>
+          </section>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <span>LUMEN Strategy &amp; Analytics</span>
-      <span>App data sources: anonymised aggregates and deduplicated sales only.</span>
+      <span>App data: prepared survey aggregates and case assumptions.</span>
     </footer>
     <script type="module" src="app.js"></script>
   </body>

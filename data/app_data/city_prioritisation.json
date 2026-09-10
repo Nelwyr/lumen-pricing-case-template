@@ -1,0 +1,242 @@
+{
+  "year": 2026,
+  "nationalMarketEur": 9100000000.0,
+  "sources": [
+    "market_context.csv (Exhibit 1, illustrative regional assumptions)",
+    "customer_city_aggregates.csv",
+    "customer_segment_city_aggregates.csv"
+  ],
+  "wellnessProxy": "Urban Wellness Professionals / all respondents in each city",
+  "cities": [
+    {
+      "city": "Berlin",
+      "respondentCount": 81,
+      "reliability": "reliable",
+      "purchaseIntent": 7.4,
+      "wellnessRespondentCount": 27,
+      "wellnessDensity": 0.3333333333333333,
+      "marketSizeEur": 1638000000.0,
+      "growth": 0.09
+    },
+    {
+      "city": "Cologne",
+      "respondentCount": 45,
+      "reliability": "reliable",
+      "purchaseIntent": 7.0,
+      "wellnessRespondentCount": 16,
+      "wellnessDensity": 0.35555555555555557,
+      "marketSizeEur": 819000000.0,
+      "growth": 0.07
+    },
+    {
+      "city": "Frankfurt",
+      "respondentCount": 32,
+      "reliability": "reliable",
+      "purchaseIntent": 7.2,
+      "wellnessRespondentCount": 6,
+      "wellnessDensity": 0.1875,
+      "marketSizeEur": 728000000.0,
+      "growth": 0.07
+    },
+    {
+      "city": "Hamburg",
+      "respondentCount": 48,
+      "reliability": "reliable",
+      "purchaseIntent": 7.5,
+      "wellnessRespondentCount": 13,
+      "wellnessDensity": 0.2708333333333333,
+      "marketSizeEur": 910000000.0,
+      "growth": 0.07
+    },
+    {
+      "city": "Munich",
+      "respondentCount": 57,
+      "reliability": "reliable",
+      "purchaseIntent": 7.3,
+      "wellnessRespondentCount": 13,
+      "wellnessDensity": 0.22807017543859648,
+      "marketSizeEur": 1365000000.0,
+      "growth": 0.09
+    },
+    {
+      "city": "Other Germany",
+      "respondentCount": 157,
+      "reliability": "reliable",
+      "purchaseIntent": 7.0,
+      "wellnessRespondentCount": 37,
+      "wellnessDensity": 0.2356687898089172,
+      "marketSizeEur": 3640000000.0,
+      "growth": 0.07
+    }
+  ],
+  "segmentDiagnostics": [
+    {
+      "city": "Berlin",
+      "segment": "Fitness & Gym-Goers",
+      "respondentCount": 14,
+      "reliability": "directional_small_sample",
+      "purchaseIntent": 8.2
+    },
+    {
+      "city": "Cologne",
+      "segment": "Fitness & Gym-Goers",
+      "respondentCount": 6,
+      "reliability": "insufficient",
+      "purchaseIntent": 7.4
+    },
+    {
+      "city": "Frankfurt",
+      "segment": "Fitness & Gym-Goers",
+      "respondentCount": 9,
+      "reliability": "directional_small_sample",
+      "purchaseIntent": 8.0
+    },
+    {
+      "city": "Hamburg",
+      "segment": "Fitness & Gym-Goers",
+      "respondentCount": 11,
+      "reliability": "directional_small_sample",
+      "purchaseIntent": 7.9
+    },
+    {
+      "city": "Munich",
+      "segment": "Fitness & Gym-Goers",
+      "respondentCount": 11,
+      "reliability": "directional_small_sample",
+      "purchaseIntent": 8.7
+    },
+    {
+      "city": "Other Germany",
+      "segment": "Fitness & Gym-Goers",
+      "respondentCount": 32,
+      "reliability": "reliable",
+      "purchaseIntent": 7.7
+    },
+    {
+      "city": "Berlin",
+      "segment": "On-the-go Commuters",
+      "respondentCount": 19,
+      "reliability": "reliable",
+      "purchaseIntent": 6.3
+    },
+    {
+      "city": "Cologne",
+      "segment": "On-the-go Commuters",
+      "respondentCount": 6,
+      "reliability": "insufficient",
+      "purchaseIntent": 6.5
+    },
+    {
+      "city": "Frankfurt",
+      "segment": "On-the-go Commuters",
+      "respondentCount": 7,
+      "reliability": "insufficient",
+      "purchaseIntent": 7.4
+    },
+    {
+      "city": "Hamburg",
+      "segment": "On-the-go Commuters",
+      "respondentCount": 10,
+      "reliability": "directional_small_sample",
+      "purchaseIntent": 7.5
+    },
+    {
+      "city": "Munich",
+      "segment": "On-the-go Commuters",
+      "respondentCount": 16,
+      "reliability": "reliable",
+      "purchaseIntent": 6.3
+    },
+    {
+      "city": "Other Germany",
+      "segment": "On-the-go Commuters",
+      "respondentCount": 32,
+      "reliability": "reliable",
+      "purchaseIntent": 6.8
+    },
+    {
+      "city": "Berlin",
+      "segment": "Students & Budget-Conscious",
+      "respondentCount": 21,
+      "reliability": "reliable",
+      "purchaseIntent": 5.6
+    },
+    {
+      "city": "Cologne",
+      "segment": "Students & Budget-Conscious",
+      "respondentCount": 17,
+      "reliability": "reliable",
+      "purchaseIntent": 5.3
+    },
+    {
+      "city": "Frankfurt",
+      "segment": "Students & Budget-Conscious",
+      "respondentCount": 10,
+      "reliability": "directional_small_sample",
+      "purchaseIntent": 5.5
+    },
+    {
+      "city": "Hamburg",
+      "segment": "Students & Budget-Conscious",
+      "respondentCount": 14,
+      "reliability": "directional_small_sample",
+      "purchaseIntent": 5.3
+    },
+    {
+      "city": "Munich",
+      "segment": "Students & Budget-Conscious",
+      "respondentCount": 17,
+      "reliability": "reliable",
+      "purchaseIntent": 6.0
+    },
+    {
+      "city": "Other Germany",
+      "segment": "Students & Budget-Conscious",
+      "respondentCount": 56,
+      "reliability": "reliable",
+      "purchaseIntent": 5.4
+    },
+    {
+      "city": "Berlin",
+      "segment": "Urban Wellness Professionals",
+      "respondentCount": 27,
+      "reliability": "reliable",
+      "purchaseIntent": 9.1
+    },
+    {
+      "city": "Cologne",
+      "segment": "Urban Wellness Professionals",
+      "respondentCount": 16,
+      "reliability": "reliable",
+      "purchaseIntent": 9.0
+    },
+    {
+      "city": "Frankfurt",
+      "segment": "Urban Wellness Professionals",
+      "respondentCount": 6,
+      "reliability": "insufficient",
+      "purchaseIntent": 8.3
+    },
+    {
+      "city": "Hamburg",
+      "segment": "Urban Wellness Professionals",
+      "respondentCount": 13,
+      "reliability": "directional_small_sample",
+      "purchaseIntent": 9.6
+    },
+    {
+      "city": "Munich",
+      "segment": "Urban Wellness Professionals",
+      "respondentCount": 13,
+      "reliability": "directional_small_sample",
+      "purchaseIntent": 9.1
+    },
+    {
+      "city": "Other Germany",
+      "segment": "Urban Wellness Professionals",
+      "respondentCount": 37,
+      "reliability": "reliable",
+      "purchaseIntent": 9.2
+    }
+  ]
+}
