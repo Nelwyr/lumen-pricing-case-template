@@ -1,0 +1,40 @@
+{
+  "cogs_per_unit_eur": 0.62,
+  "channel_economics": {
+    "DTC Online": {
+      "retailer_margin_pct": 0.0,
+      "distributor_cut_pct": 0.0,
+      "payment_processing_pct": 0.029,
+      "fulfillment_cost_eur": 0.35
+    },
+    "Retail/Grocery": {
+      "retailer_margin_pct": 0.35,
+      "distributor_cut_pct": 0.08,
+      "payment_processing_pct": 0.0,
+      "fulfillment_cost_eur": 0.0
+    },
+    "Gym & Office": {
+      "retailer_margin_pct": 0.2,
+      "distributor_cut_pct": 0.0,
+      "payment_processing_pct": 0.0,
+      "fulfillment_cost_eur": 0.0
+    }
+  },
+  "acceptance_curve": [
+    {
+      "price_eur": 1.79,
+      "acceptance_pct": 61.7
+    },
+    {
+      "price_eur": 2.19,
+      "acceptance_pct": 51.7
+    },
+    {
+      "price_eur": 2.59,
+      "acceptance_pct": 26.7
+    }
+  ],
+  "estimated_ltv_eur": 126.31859995512677,
+  "average_monthly_frequency": 6.144285714285714,
+  "target_ltv_cac_ratio": 3
+}
