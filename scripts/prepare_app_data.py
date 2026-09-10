@@ -7,6 +7,7 @@ addresses. It contains only metrics aggregated at the segment-by-city level.
 from __future__ import annotations
 
 import csv
+import json
 from collections import Counter, defaultdict
 from pathlib import Path
 from statistics import mean
@@ -18,9 +19,13 @@ OUTPUT_DIR = DATA_DIR / "app_data"
 
 CUSTOMER_INPUT = DATA_DIR / "customer_survey.csv"
 SALES_INPUT = DATA_DIR / "historical_sales_weekly.csv"
+CHANNEL_ECONOMICS_INPUT = DATA_DIR / "channel_economics.csv"
+PRICE_TEST_INPUT = DATA_DIR / "price_test_results.csv"
+MARKETING_FUNNEL_INPUT = DATA_DIR / "marketing_funnel_monthly.csv"
 CUSTOMER_OUTPUT = OUTPUT_DIR / "customer_segment_city_aggregates.csv"
 CITY_OUTPUT = OUTPUT_DIR / "customer_city_aggregates.csv"
 SALES_OUTPUT = OUTPUT_DIR / "historical_sales_weekly_deduplicated.csv"
+SIMULATOR_ASSUMPTIONS_OUTPUT = OUTPUT_DIR / "simulator_assumptions.json"
 
 CHANNELS = ("DTC Online", "Retail/Grocery", "Gym & Office")
 NUMERIC_FIELDS = (
@@ -150,10 +155,78 @@ def deduplicate_sales() -> tuple[int, int]:
     return len(rows), len(unique_rows)
 
 
+def write_simulator_assumptions() -> None:
+    """Export only the aggregated model inputs needed by the simulator engine."""
+    with CHANNEL_ECONOMICS_INPUT.open(encoding="utf-8", newline="") as source:
+        channel_rows = list(csv.DictReader(source))
+    channel_economics: dict[str, dict[str, float]] = {}
+    for row in channel_rows:
+        channel_economics.setdefault(
+            row["channel"],
+            {
+                "retailer_margin_pct": float(row["retailer_margin_pct"]),
+                "distributor_cut_pct": float(row["distributor_cut_pct"]),
+                "payment_processing_pct": float(row["payment_processing_pct"]),
+                "fulfillment_cost_eur": float(row["fulfillment_cost_eur"]),
+            },
+        )
+
+    with PRICE_TEST_INPUT.open(encoding="utf-8", newline="") as source:
+        price_test_rows = list(csv.DictReader(source))
+    acceptance_by_price: dict[float, list[float]] = defaultdict(list)
+    for row in price_test_rows:
+        acceptance_by_price[float(row["price_eur"])].append(
+            float(row["estimated_acceptance_pct_of_survey"])
+        )
+
+    with MARKETING_FUNNEL_INPUT.open(encoding="utf-8", newline="") as source:
+        funnel_rows = list(csv.DictReader(source))
+    total_acquired = sum(float(row["conversions_customers_acquired"]) for row in funnel_rows)
+    weighted_ltv = sum(
+        float(row["ltv_estimate_eur"]) * float(row["conversions_customers_acquired"])
+        for row in funnel_rows
+    ) / total_acquired
+
+    with CUSTOMER_INPUT.open(encoding="utf-8", newline="") as source:
+        customer_rows = list(csv.DictReader(source))
+    average_monthly_frequency = mean(
+        float(row["purchase_frequency_per_month"]) for row in customer_rows
+    )
+
+    with (DATA_DIR / "cost_breakdown.csv").open(encoding="utf-8", newline="") as source:
+        cost_rows = list(csv.DictReader(source))
+    cogs = float(
+        next(
+            row["cost_per_unit_eur"]
+            for row in cost_rows
+            if row["cost_component"] == "TOTAL COGS per unit (330ml can)"
+        )
+    )
+
+    assumptions = {
+        "cogs_per_unit_eur": cogs,
+        "channel_economics": channel_economics,
+        "acceptance_curve": [
+            {
+                "price_eur": price,
+                "acceptance_pct": mean(acceptances),
+            }
+            for price, acceptances in sorted(acceptance_by_price.items())
+        ],
+        "estimated_ltv_eur": weighted_ltv,
+        "average_monthly_frequency": average_monthly_frequency,
+        "target_ltv_cac_ratio": 3,
+    }
+    with SIMULATOR_ASSUMPTIONS_OUTPUT.open("w", encoding="utf-8") as destination:
+        json.dump(assumptions, destination, indent=2)
+        destination.write("\n")
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     customer_rows = aggregate_customer_survey()
     sales_rows, unique_sales_rows = deduplicate_sales()
+    write_simulator_assumptions()
     print(
         f"Aggregated {customer_rows} customer responses into "
         f"{CUSTOMER_OUTPUT.name} and {CITY_OUTPUT.name}."
@@ -162,6 +235,7 @@ def main() -> None:
         f"Removed {sales_rows - unique_sales_rows} exact duplicate sales rows; "
         f"wrote {unique_sales_rows} rows to {SALES_OUTPUT.name}."
     )
+    print(f"Wrote aggregate simulator assumptions to {SIMULATOR_ASSUMPTIONS_OUTPUT.name}.")
 
 
 if __name__ == "__main__":
