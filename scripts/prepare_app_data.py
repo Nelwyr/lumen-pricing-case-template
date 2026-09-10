@@ -30,6 +30,7 @@ SALES_OUTPUT = OUTPUT_DIR / "historical_sales_weekly_deduplicated.csv"
 SIMULATOR_ASSUMPTIONS_OUTPUT = OUTPUT_DIR / "simulator_assumptions.json"
 CITY_PRIORITISATION_OUTPUT = OUTPUT_DIR / "city_prioritisation.json"
 LAUNCH_WINDOW_OUTPUT = OUTPUT_DIR / "launch_window.json"
+PRICE_POSITIONING_OUTPUT = OUTPUT_DIR / "price_positioning.json"
 
 CHANNELS = ("DTC Online", "Retail/Grocery", "Gym & Office")
 NUMERIC_FIELDS = (
@@ -324,6 +325,51 @@ def write_launch_window() -> None:
         destination.write("\n")
 
 
+def write_price_positioning() -> None:
+    """Keep awareness counts within each segment; never pool different segments."""
+    brands = [
+        ("PulsUp", "aware_pulsup"), ("Mate Libre", "aware_matelibre"),
+        ("VoltFit", "aware_voltfit"), ("Root & Rise", "aware_rootandrise"),
+    ]
+    segment_names = ["Urban Wellness Professionals", "Students & Budget-Conscious",
+                     "Fitness & Gym-Goers", "On-the-go Commuters"]
+    with CUSTOMER_INPUT.open(encoding="utf-8", newline="") as source:
+        groups = defaultdict(list)
+        for row in csv.DictReader(source):
+            if any(row[field].strip().lower() not in {"0", "1", "true", "false", "yes", "no"}
+                   for _, field in brands):
+                raise ValueError("Missing or invalid segment awareness response")
+            groups[row["segment"]].append(row)
+    if set(groups) != set(segment_names):
+        raise ValueError("Expected exactly the four survey segments")
+    segments = [{
+        "name": name, "respondentCount": len(groups[name]),
+        "awareness": [{
+            "brand": brand,
+            "awareCount": sum(is_true(row[field]) for row in groups[name]),
+            "awarenessPct": 100 * sum(is_true(row[field]) for row in groups[name]) / len(groups[name]),
+        } for brand, field in brands],
+    } for name in segment_names]
+    prices = []
+    seen = set()
+    with (DATA_DIR / "competitor_prices_by_channel.csv").open(encoding="utf-8", newline="") as source:
+        for row in csv.DictReader(source):
+            if row["format"] != "Single can (330ml)":
+                continue
+            key = (row["competitor"], row["channel"])
+            price = float(row["price_eur"])
+            if key in seen or key[0] not in dict(brands) or key[1] not in CHANNELS or not math.isfinite(price) or price <= 0:
+                raise ValueError("Invalid or duplicate competitor single-can price")
+            seen.add(key)
+            prices.append({"brand": key[0], "channel": key[1], "priceEur": price})
+    if any(not any(row["brand"] == brand for row in prices) for brand, _ in brands):
+        raise ValueError("Missing competitor price evidence")
+    with PRICE_POSITIONING_OUTPUT.open("w", encoding="utf-8") as destination:
+        json.dump({"brands": [brand for brand, _ in brands], "channels": list(CHANNELS),
+                   "format": "Single can (330ml)", "segments": segments, "prices": prices}, destination, indent=2)
+        destination.write("\n")
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     customer_rows = aggregate_customer_survey()
@@ -331,6 +377,7 @@ def main() -> None:
     write_simulator_assumptions()
     write_city_prioritisation()
     write_launch_window()
+    write_price_positioning()
     print(
         f"Aggregated {customer_rows} customer responses into "
         f"{CUSTOMER_OUTPUT.name} and {CITY_OUTPUT.name}."
@@ -342,6 +389,7 @@ def main() -> None:
     print(f"Wrote aggregate simulator assumptions to {SIMULATOR_ASSUMPTIONS_OUTPUT.name}.")
     print(f"Wrote city ranking inputs and separate diagnostics to {CITY_PRIORITISATION_OUTPUT.name}.")
     print(f"Wrote monthly demand and weather context to {LAUNCH_WINDOW_OUTPUT.name}.")
+    print(f"Wrote separate segment awareness and comparable prices to {PRICE_POSITIONING_OUTPUT.name}.")
 
 
 if __name__ == "__main__":

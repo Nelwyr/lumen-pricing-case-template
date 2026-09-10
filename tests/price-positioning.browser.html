@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Price positioning browser checks</title>
+<style>body { margin: 0; } iframe { border: 0; display: block; }</style>
+<iframe id="app" src="../index.html#simulator" width="1200" height="2100" title="Price positioning under test"></iframe>
+<pre id="report">RUNNING</pre>
+<script type="module">
+import { validatePositioningData, positioningRows } from "../price-positioning.js";
+const frame = document.getElementById("app");
+frame.width = new URLSearchParams(location.search).get("viewport") || "1200";
+const checks = [];
+const assert = (condition, message) => { if (!condition) throw new Error(message); checks.push(message); };
+const throws = (fn) => { try { fn(); return false; } catch { return true; } };
+async function until(test) {
+  for (let i = 0; i < 300; i++) {
+    if (test()) return;
+    await new Promise((resolve) => setTimeout(resolve, 20));
+  }
+  throw new Error("Timed out waiting for price positioning");
+}
+try {
+  const data = validatePositioningData(await (await fetch("../data/app_data/price_positioning.json")).json());
+  const wellness = "Urban Wellness Professionals", students = "Students & Budget-Conscious";
+  const awareness = (segment, brand) => data.segments.find((row) => row.name === segment).awareness.find((row) => row.brand === brand);
+  assert(data.segments.length === 4 && data.segments.reduce((sum, row) => sum + row.respondentCount, 0) === 420, "Four distinct segments cover 420 respondents without a pooled row");
+  assert(awareness(wellness, "Root & Rise").awareCount === 73 && awareness(wellness, "PulsUp").awareCount === 39 && data.segments[0].respondentCount === 112, "Wellness awareness preserves exact counts: Root & Rise 73/112, PulsUp 39/112");
+  assert(awareness(students, "Root & Rise").awareCount === 7 && awareness(students, "PulsUp").awareCount === 115 && data.segments[1].respondentCount === 135, "Student awareness preserves exact counts: Root & Rise 7/135, PulsUp 115/135");
+  assert(data.prices.length === 10 && positioningRows(data, wellness, "Retail/Grocery").map((row) => row.priceEur).join() === "1.07,1.59,2.37,2.98", "Prepared prices use only the ten comparable single-can listings");
+  assert(positioningRows(data, wellness, "DTC Online")[1].priceEur === null && positioningRows(data, wellness, "Gym & Office")[3].priceEur === null, "Missing channel prices remain null, never zero or borrowed");
+  assert(throws(() => validatePositioningData({ ...data, segments: data.segments.slice(1) })), "Missing segment data is rejected");
+  const badCounts = structuredClone(data);
+  badCounts.segments[0].awareness[0].awareCount = 0;
+  assert(throws(() => validatePositioningData(badCounts)), "Awareness must reconcile to its own segment count");
+  assert(throws(() => validatePositioningData({ ...data, prices: [...data.prices, data.prices[0]] })), "Duplicate price listings are rejected");
+  assert(!/respondent_id|first_name|last_name|email/.test(JSON.stringify(data)) && !data.brands.includes("LUMEN"), "Export has neither direct identifiers nor invented LUMEN awareness");
+  await until(() => frame.contentDocument.getElementById("position-status")?.textContent === "Price positioning ready" && frame.contentDocument.getElementById("simulator-status")?.textContent === "Simulator ready");
+  const doc = frame.contentDocument, win = frame.contentWindow;
+  const el = (id) => doc.getElementById(id);
+  const text = (id) => el(id).textContent;
+  const dot = (brand) => [...doc.querySelectorAll(".position-dot")].find((item) => item.dataset.brand === brand).querySelector("circle");
+  const card = (brand) => [...doc.querySelectorAll(".position-brand-card")].find((item) => item.querySelector("h4").textContent.includes(brand));
+  function segment(name) {
+    const input = [...doc.querySelectorAll('[name="position-segment"]')].find((item) => item.value === name);
+    input.click();
+  }
+  function price(value) {
+    el("price").value = value;
+    el("price").dispatchEvent(new win.Event("input", { bubbles: true }));
+  }
+  function channel(value) {
+    el("position-channel").value = value;
+    el("position-channel").dispatchEvent(new win.Event("change", { bubbles: true }));
+  }
+  assert(doc.querySelectorAll('[name="position-segment"]').length === 4 && text("position-audience").includes(wellness), "Four prominent segment choices default to Wellness");
+  assert(card("Root & Rise").textContent.includes("65% awareness") && card("PulsUp").textContent.includes("35% awareness"), "Wellness shows the requested 65% versus 35% contrast");
+  assert(el("lumen-price-line").getAttribute("y1") === "64" && el("lumen-price-line").getAttribute("y2") === "354" && doc.querySelectorAll(".position-dot").length === 4, "LUMEN has a full-height line, with dots only for four competitors");
+  assert(text("position-assessment").includes("€0.08 below VoltFit"), "Default simulator price is compared to the nearest listed retail price");
+  const rootX = dot("Root & Rise").getAttribute("cx"), rootWellnessY = dot("Root & Rise").getAttribute("cy");
+  const originalLineX = el("lumen-price-line").getAttribute("x1");
+  segment(students);
+  assert(card("Root & Rise").textContent.includes("5% awareness") && card("PulsUp").textContent.includes("85% awareness"), "Students reverse the contrast to 5% versus 85%");
+  assert(dot("Root & Rise").getAttribute("cx") === rootX && Number(dot("Root & Rise").getAttribute("cy")) > Number(rootWellnessY) && el("lumen-price-line").getAttribute("x1") === originalLineX, "Segment changes move awareness only and preserve price coordinates");
+  for (const item of data.segments) {
+    segment(item.name);
+    assert(text("position-audience").includes(item.name) && card("PulsUp").textContent.includes(`${Math.round(awareness(item.name, "PulsUp").awarenessPct)}% awareness`), "Each segment reads its own measured awareness: " + item.name);
+  }
+  price(2.59);
+  assert(Number(el("lumen-price-line").getAttribute("x1")) > Number(originalLineX) && text("position-assessment").includes("€0.22 above VoltFit"), "Simulator price immediately moves the line and recalculates the gap");
+  assert(el("lumen-price-line").getAttribute("y1") === "64" && el("lumen-price-line").getAttribute("y2") === "354", "Changing price never gives LUMEN a measured height");
+  const ratio = doc.querySelector('[data-metric="ratio"]').textContent;
+  channel("DTC Online");
+  assert(doc.querySelectorAll(".position-dot").length === 3 && card("Mate Libre").textContent.includes("No single-can price listed") && !text("position-chart").includes("NaN"), "DTC omits unlisted Mate Libre price while retaining its awareness card");
+  assert(text("position-assessment").includes("€0.10 above VoltFit") && card("VoltFit").textContent.includes("€2.49"), "Channel switches use DTC single-can price, not multipack price");
+  channel("Gym & Office");
+  assert(doc.querySelectorAll(".position-dot").length === 3 && card("Root & Rise").textContent.includes("No single-can price listed"), "Gym channel handles missing Root & Rise listing");
+  assert(doc.querySelector('[data-metric="ratio"]').textContent === ratio, "Segment and price-context channel do not change financial inputs");
+  for (const invalid of ["", "0", "-1", "2.291"]) {
+    price(invalid);
+    assert(!el("lumen-price-line") && text("position-price-summary").includes("invalid") && doc.querySelectorAll(".position-dot").length === 3, "Invalid price clears the LUMEN line and leaves competitor evidence: " + invalid);
+  }
+  price(10);
+  assert(Number(el("lumen-price-line").getAttribute("x1")) === el("position-chart").querySelector("svg").viewBox.baseVal.width - 40 && text("position-price-summary").includes("€10.00"), "High price expands the axis and remains visible");
+  price(0.01);
+  assert(Number(el("lumen-price-line").getAttribute("x1")) >= 60, "Positive low price remains inside the axis");
+  price(2.37); channel("Retail/Grocery"); segment(wellness);
+  assert(text("position-assessment").includes("matches VoltFit"), "Exact competitor price is described as a match");
+  el("mix-dtc").value = "10";
+  el("scenario-form").dispatchEvent(new win.Event("input", { bubbles: true }));
+  assert(el("lumen-price-line") && text("position-price-summary").includes("€2.37"), "An unrelated invalid channel mix does not hide a valid price diagnostic");
+  el("mix-dtc").value = "40";
+  price(2.29);
+  win.location.hash = "cities";
+  await until(() => !el("cities").hidden);
+  win.location.hash = "simulator";
+  await until(() => !el("simulator").hidden);
+  assert(text("position-audience").includes(wellness), "Segment choice survives navigation");
+  const originalFetch = win.fetch;
+  win.fetch = async (url, ...args) => String(url).includes("price_positioning.json") ? new win.Response("", { status: 503 }) : originalFetch(url, ...args);
+  const ui = await win.eval('import("/price-positioning.js")');
+  await ui.initialisePricePositioning();
+  assert(el("position-controls").disabled && el("position-results").hidden && !el("retry-positioning").hidden, "Failed load disables controls, hides stale results and offers retry");
+  win.fetch = async (url, ...args) => String(url).includes("price_positioning.json") ? new win.Response(JSON.stringify(badCounts), { status: 200 }) : originalFetch(url, ...args);
+  el("retry-positioning").click();
+  await until(() => text("position-status").startsWith("Price positioning unavailable"));
+  assert(el("position-results").hidden, "Malformed successful response cannot show misleading awareness");
+  win.fetch = originalFetch;
+  el("retry-positioning").click();
+  await until(() => text("position-status") === "Price positioning ready");
+  assert(!el("position-controls").disabled && !el("position-results").hidden && el("lumen-price-line"), "Retry restores the interactive diagnostic");
+  assert(doc.documentElement.scrollWidth <= win.innerWidth, "No document overflow at selected viewport");
+  const chartBounds = el("position-chart").getBoundingClientRect();
+  assert([...doc.querySelectorAll(".position-dot, #lumen-price-line")].every((item) => {
+    const bounds = item.getBoundingClientRect();
+    return bounds.left >= chartBounds.left && bounds.right <= chartBounds.right;
+  }), "All competitor dots and the LUMEN line fit on screen together");
+  el("positioning-title").scrollIntoView();
+  document.getElementById("report").textContent = "PASS: " + checks.length + " browser checks\n" + checks.join("\n");
+} catch (error) {
+  document.getElementById("report").textContent = "FAIL: " + error.stack + "\nPassed: " + checks.join("\n");
+}
+</script>
+</html>

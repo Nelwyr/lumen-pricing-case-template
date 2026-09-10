@@ -1,0 +1,172 @@
+{
+  "brands": [
+    "PulsUp",
+    "Mate Libre",
+    "VoltFit",
+    "Root & Rise"
+  ],
+  "channels": [
+    "DTC Online",
+    "Retail/Grocery",
+    "Gym & Office"
+  ],
+  "format": "Single can (330ml)",
+  "segments": [
+    {
+      "name": "Urban Wellness Professionals",
+      "respondentCount": 112,
+      "awareness": [
+        {
+          "brand": "PulsUp",
+          "awareCount": 39,
+          "awarenessPct": 34.82142857142857
+        },
+        {
+          "brand": "Mate Libre",
+          "awareCount": 51,
+          "awarenessPct": 45.535714285714285
+        },
+        {
+          "brand": "VoltFit",
+          "awareCount": 55,
+          "awarenessPct": 49.107142857142854
+        },
+        {
+          "brand": "Root & Rise",
+          "awareCount": 73,
+          "awarenessPct": 65.17857142857143
+        }
+      ]
+    },
+    {
+      "name": "Students & Budget-Conscious",
+      "respondentCount": 135,
+      "awareness": [
+        {
+          "brand": "PulsUp",
+          "awareCount": 115,
+          "awarenessPct": 85.18518518518519
+        },
+        {
+          "brand": "Mate Libre",
+          "awareCount": 78,
+          "awarenessPct": 57.77777777777778
+        },
+        {
+          "brand": "VoltFit",
+          "awareCount": 50,
+          "awarenessPct": 37.03703703703704
+        },
+        {
+          "brand": "Root & Rise",
+          "awareCount": 7,
+          "awarenessPct": 5.185185185185185
+        }
+      ]
+    },
+    {
+      "name": "Fitness & Gym-Goers",
+      "respondentCount": 83,
+      "awareness": [
+        {
+          "brand": "PulsUp",
+          "awareCount": 44,
+          "awarenessPct": 53.01204819277108
+        },
+        {
+          "brand": "Mate Libre",
+          "awareCount": 29,
+          "awarenessPct": 34.93975903614458
+        },
+        {
+          "brand": "VoltFit",
+          "awareCount": 64,
+          "awarenessPct": 77.10843373493977
+        },
+        {
+          "brand": "Root & Rise",
+          "awareCount": 27,
+          "awarenessPct": 32.53012048192771
+        }
+      ]
+    },
+    {
+      "name": "On-the-go Commuters",
+      "respondentCount": 90,
+      "awareness": [
+        {
+          "brand": "PulsUp",
+          "awareCount": 69,
+          "awarenessPct": 76.66666666666667
+        },
+        {
+          "brand": "Mate Libre",
+          "awareCount": 38,
+          "awarenessPct": 42.22222222222222
+        },
+        {
+          "brand": "VoltFit",
+          "awareCount": 23,
+          "awarenessPct": 25.555555555555557
+        },
+        {
+          "brand": "Root & Rise",
+          "awareCount": 15,
+          "awarenessPct": 16.666666666666668
+        }
+      ]
+    }
+  ],
+  "prices": [
+    {
+      "brand": "PulsUp",
+      "channel": "DTC Online",
+      "priceEur": 1.15
+    },
+    {
+      "brand": "PulsUp",
+      "channel": "Retail/Grocery",
+      "priceEur": 1.07
+    },
+    {
+      "brand": "PulsUp",
+      "channel": "Gym & Office",
+      "priceEur": 1.28
+    },
+    {
+      "brand": "Mate Libre",
+      "channel": "Retail/Grocery",
+      "priceEur": 1.59
+    },
+    {
+      "brand": "Mate Libre",
+      "channel": "Gym & Office",
+      "priceEur": 1.83
+    },
+    {
+      "brand": "VoltFit",
+      "channel": "DTC Online",
+      "priceEur": 2.49
+    },
+    {
+      "brand": "VoltFit",
+      "channel": "Retail/Grocery",
+      "priceEur": 2.37
+    },
+    {
+      "brand": "VoltFit",
+      "channel": "Gym & Office",
+      "priceEur": 2.72
+    },
+    {
+      "brand": "Root & Rise",
+      "channel": "DTC Online",
+      "priceEur": 3.11
+    },
+    {
+      "brand": "Root & Rise",
+      "channel": "Retail/Grocery",
+      "priceEur": 2.98
+    }
+  ]
+}
