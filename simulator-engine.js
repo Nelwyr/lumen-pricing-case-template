@@ -91,9 +91,10 @@ export function createSimulatorEngine(assumptions) {
     );
     const acceptance = interpolateAcceptance(priceEur, curve);
     const customersAcquired = marketingBudgetEur / cacEur;
-    const ltvCacRatio = assumptions.estimated_ltv_eur / cacEur;
     const monthlyContributionPerCustomerEur =
       contributionPerUnitEur * assumptions.average_monthly_frequency;
+    const scenarioLtvEur = monthlyContributionPerCustomerEur * assumptions.customer_lifetime_months;
+    const ltvCacRatio = scenarioLtvEur / cacEur;
 
     return {
       priceEur,
@@ -103,6 +104,7 @@ export function createSimulatorEngine(assumptions) {
       acceptancePct: acceptance.acceptancePct,
       acceptanceRangeStatus: acceptance.rangeStatus,
       customersAcquired,
+      scenarioLtvEur,
       ltvCacRatio,
       targetLtvCacRatio: assumptions.target_ltv_cac_ratio,
       ltvCacTargetMet: ltvCacRatio >= assumptions.target_ltv_cac_ratio,
