@@ -19,7 +19,7 @@ function renderRoute() {
   document.querySelectorAll("[data-route-link]").forEach((link) => {
     link.toggleAttribute("aria-current", link.dataset.routeLink === route);
   });
-  document.title = `${route === "home" ? "Accueil" : route === "simulator" ? "Scénarios ROI" : "Priorisation villes"} — LUMEN`;
+  document.title = `${route === "home" ? "Home" : route === "simulator" ? "ROI scenarios" : "City prioritisation"} — LUMEN`;
 }
 
 async function checkApprovedDataSources() {
@@ -30,11 +30,11 @@ async function checkApprovedDataSources() {
       throw new Error("A required application data source could not be loaded.");
     }
     statuses.forEach((status) => {
-      status.textContent = "Sources agrégées prêtes";
+      status.textContent = "Aggregated data sources ready";
     });
   } catch {
     statuses.forEach((status) => {
-      status.textContent = "Données à charger via serveur local";
+      status.textContent = "Unable to load data. Serve the app through a local web server.";
     });
   }
 }
